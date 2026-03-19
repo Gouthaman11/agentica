@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build:client",
+  "buildCommand": "corepack pnpm run build:client",
   "outputDirectory": "dist/spa",
-  "installCommand": "npm install",
+  "installCommand": "corepack pnpm install --frozen-lockfile --prod=false",
   "framework": "vite"
 }
