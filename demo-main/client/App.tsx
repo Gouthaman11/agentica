@@ -12,6 +12,7 @@ import Transactions from "./pages/Transactions";
 import Analytics from "./pages/Analytics";
 import Export from "./pages/Export";
 import SettingsPage from "./pages/Settings";
+import EnhancedApp from "./enhanced-ui/pages/EnhancedApp";
 
 const queryClient = new QueryClient();
 
@@ -27,9 +28,11 @@ const App = () => (
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/export" element={<Export />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/enhanced/*" element={<EnhancedApp />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
