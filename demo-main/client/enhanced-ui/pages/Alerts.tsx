@@ -1,126 +1,193 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { AlertOctagon, ShieldAlert, Cpu, CheckCircle2, TrendingUp, Sparkles, Activity } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { AlertTriangle, AlertOctagon, CheckCircle2, ChevronDown, ChevronUp, Activity, Cpu, ShieldAlert, Sparkles, TrendingUp, Info, ShieldCheck } from 'lucide-react';
+
+interface AlertProps {
+  title: string;
+  reason: string;
+  action: string;
+  severity: 'High' | 'Medium' | 'Low';
+  delay: number;
+}
+
+const AnomalyCard = ({ title, reason, action, severity, delay }: AlertProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  const getSeverityColors = (sev: string) => {
+    switch(sev) {
+      case 'High': return { bg: 'bg-rose-500/10', text: 'text-rose-500', border: 'border-rose-500/20', darkBg: 'dark:bg-rose-500/5', bar: 'bg-rose-500', hover: 'hover:border-rose-500/40' };
+      case 'Medium': return { bg: 'bg-amber-500/10', text: 'text-amber-500', border: 'border-amber-500/20', darkBg: 'dark:bg-amber-500/5', bar: 'bg-amber-500', hover: 'hover:border-amber-500/40' };
+      default: return { bg: 'bg-blue-500/10', text: 'text-blue-500', border: 'border-blue-500/20', darkBg: 'dark:bg-blue-500/5', bar: 'bg-blue-500', hover: 'hover:border-blue-500/40' };
+    }
+  };
+
+  const colors = getSeverityColors(severity);
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay }}
+      className={`relative overflow-hidden p-6 rounded-2xl border ${colors.border} bg-white/60 dark:bg-black/40 ${colors.hover} transition-all duration-300 shadow-sm`}
+    >
+      <div className={`absolute top-0 left-0 w-1 h-full ${colors.bar}`}></div>
+      <div className="flex items-start gap-4">
+        <div className={`p-2.5 rounded-xl shrink-0 mt-0.5 ${colors.bg} ${colors.text}`}>
+          {severity === 'High' ? <AlertOctagon className="w-6 h-6" /> : <AlertTriangle className="w-6 h-6" />}
+        </div>
+        <div className="flex-1">
+          <div className="flex justify-between items-start">
+            <h3 className={`font-bold text-lg text-slate-900 dark:text-white`}>
+              {title}
+            </h3>
+            <span className={`text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider ${colors.bg} ${colors.text}`}>
+              Severity: {severity}
+            </span>
+          </div>
+
+          <AnimatePresence initial={false}>
+            {isExpanded ? (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="mt-4 space-y-4">
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-white/5">
+                    <span className="flex items-center gap-1.5 text-xs font-bold text-slate-500 uppercase tracking-wider mb-1"><Info className="w-3.5 h-3.5" /> Detailed Reason</span>
+                    <p className="text-sm text-slate-700 dark:text-slate-300 font-medium">{reason}</p>
+                  </div>
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-white/5">
+                    <span className="flex items-center gap-1.5 text-xs font-bold text-slate-500 uppercase tracking-wider mb-1"><ShieldCheck className="w-3.5 h-3.5" /> Suggested Action</span>
+                    <p className="text-sm text-slate-700 dark:text-slate-300 font-medium">{action}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ) : (
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 line-clamp-1">{reason}</p>
+            )}
+          </AnimatePresence>
+
+          <div className="mt-4 flex items-center justify-between">
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 flex items-center gap-1 hover:text-indigo-700 transition-colors"
+            >
+              {isExpanded ? <><ChevronUp className="w-4 h-4" /> View Less</> : <><ChevronDown className="w-4 h-4" /> View Full Report</>}
+            </button>
+            {isExpanded && (
+              <div className="flex gap-2">
+                <button className="text-xs font-medium px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg hover:opacity-90 transition shadow-md">Resolve</button>
+                <button className="text-xs font-medium px-4 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition">Dismiss</button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export default function Alerts() {
-  const anomalies = [
-    { id: 1, title: 'Unusual Expense Spike', desc: 'Software expenses are 215% higher than your 6-month average.', criticality: 'high' },
-    { id: 2, title: 'Duplicate Transaction Detected', desc: 'Possible duplicate payment of $45.00 to "AWS Services" on Mar 22.', criticality: 'medium' },
-    { id: 3, title: 'Unrecognized Vendor', desc: 'A transaction from "PAYPAL *XYZCorp" does not match your usual vendors.', criticality: 'medium' },
-  ];
-
-  const suggestions = [
-    { id: 1, title: 'Invest Idle Cash', desc: 'You have $45,000 sitting idle. Moving this to a treasury account could yield ~$180/mo.', icon: TrendingUp },
-    { id: 2, title: 'Optimize R&D Tax Credits', desc: 'Your engineering expenses appear to qualify for an extra $12k in credits.', icon: CheckCircle2 },
+  const anomalies: AlertProps[] = [
+    { 
+      title: 'High Spending Spike Detected', 
+      reason: 'Your total expenses increased by 42% in the latest upload compared to the previous period. Major increase observed strictly in Food and Subscription categories.', 
+      action: 'Review recent transactions immediately and identify avoidable expenses to prevent cash flow drainage.',
+      severity: 'High',
+      delay: 0.1
+    },
+    { 
+      title: 'Duplicate Transaction Alert', 
+      reason: 'A duplicate charge of ₹499 for Netflix has been detected within a short time frame of exactly 4 hours.', 
+      action: 'Verify with your bank or service provider for a possible refund. Dispute the charge if unauthorized.',
+      severity: 'Medium',
+      delay: 0.2
+    },
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8 pb-12">
       <div className="flex justify-between items-end">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Alerts & AI Insights</h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-1">Nexus AI automatically monitors your account for anomalies and optimization opportunities.</p>
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Alerts & Anomalies</h1>
+          <p className="text-slate-500 dark:text-slate-400 mt-1">Enterprise-grade transaction monitoring and anomaly detection engine.</p>
         </div>
-        <div className="flex bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 px-4 py-2 rounded-xl text-sm font-medium items-center gap-2 border border-indigo-500/20 shadow-sm animate-pulse">
+        <div className="flex bg-rose-500/10 text-rose-600 dark:text-rose-400 px-4 py-2 rounded-xl text-sm font-bold items-center gap-2 border border-rose-500/20 shadow-sm animate-pulse">
           <Cpu className="w-4 h-4" />
-          AI Monitor Active
+          Real-time Scanning Active
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Anomalies Section */}
-        <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           className="p-6 rounded-3xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/50 dark:border-white/5 shadow-sm"
-        >
-          <div className="flex items-center gap-2 mb-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        {/* Critical Alerts Pipeline */}
+        <div className="xl:col-span-2 space-y-6">
+          <div className="flex items-center gap-2 mb-2">
             <ShieldAlert className="w-6 h-6 text-rose-500" />
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white">Anomaly Detection</h2>
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white">Security & Anomaly Pipeline</h2>
           </div>
           
-          <div className="space-y-4">
-            {anomalies.map((item, i) => (
-              <motion.div 
-                key={item.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className={`relative overflow-hidden p-5 rounded-2xl border ${
-                  item.criticality === 'high' 
-                    ? 'bg-rose-50/50 dark:bg-rose-500/5 border-rose-200 dark:border-rose-500/20' 
-                    : 'bg-amber-50/50 dark:bg-amber-500/5 border-amber-200 dark:border-amber-500/20'
-                }`}
-              >
-                {item.criticality === 'high' && (
-                  <div className="absolute top-0 left-0 w-1 h-full bg-rose-500"></div>
-                )}
-                <div className="flex items-start gap-4">
-                  <div className={`p-2 rounded-full mt-0.5 ${
-                    item.criticality === 'high' ? 'bg-rose-500/10 text-rose-500' : 'bg-amber-500/10 text-amber-500'
-                  }`}>
-                    <AlertOctagon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className={`font-bold ${item.criticality === 'high' ? 'text-rose-600 dark:text-rose-400' : 'text-amber-600 dark:text-amber-400'}`}>
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">{item.desc}</p>
-                    <div className="mt-3 flex gap-2">
-                      <button className="text-xs font-medium px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition">Investigate</button>
-                      <button className="text-xs font-medium px-3 py-1.5 text-slate-500 hover:text-slate-900 dark:hover:text-slate-200 transition">Dismiss</button>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+          <div className="space-y-5">
+            {anomalies.map((anomaly, index) => (
+              <AnomalyCard key={index} {...anomaly} />
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Smart Suggestions Section */}
-        <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ delay: 0.2 }}
-           className="p-6 rounded-3xl bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-transparent backdrop-blur-xl border border-indigo-500/10 shadow-sm"
-        >
-          <div className="flex items-center gap-2 mb-6">
-            <Sparkles className="w-6 h-6 text-indigo-500" />
-            <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-500 dark:from-indigo-400 dark:to-purple-400">
-              Smart Suggestions
-            </h2>
-          </div>
+        {/* Global Stats / Smart Suggestions Sidebar */}
+        <div className="xl:col-span-1 space-y-6">
+          <motion.div
+             initial={{ opacity: 0, x: 20 }}
+             animate={{ opacity: 1, x: 0 }}
+             transition={{ delay: 0.3 }}
+             className="p-6 rounded-3xl bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-transparent backdrop-blur-xl border border-indigo-500/10 shadow-sm"
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <Sparkles className="w-6 h-6 text-indigo-500" />
+              <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-500 dark:from-indigo-400 dark:to-purple-400">
+                Actionable Next Steps
+              </h2>
+            </div>
 
-          <div className="space-y-4">
-            {suggestions.map((item, i) => (
-              <motion.div 
-                key={item.id}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 + 0.2 }}
-                className="p-5 rounded-2xl bg-white/60 dark:bg-black/40 border border-slate-200/50 dark:border-white/5 hover:border-indigo-500/30 transition-colors group cursor-pointer"
-              >
+            <div className="space-y-4">
+              <div className="p-5 rounded-2xl bg-white/60 dark:bg-black/40 border border-slate-200/50 dark:border-white/5 hover:border-indigo-500/30 transition-colors group cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
-                    <item.icon className="w-5 h-5" />
+                    <TrendingUp className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{item.title}</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">{item.desc}</p>
-                    <button className="mt-3 text-xs font-semibold text-indigo-600 dark:text-indigo-400 flex items-center opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 duration-300">
-                      Apply Suggestion →
+                    <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Invest Idle Cash</h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">You have ₹45,000 sitting idle. Moving this to a treasury account could yield ~₹1,080/mo.</p>
+                    <button className="mt-3 text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 duration-300">
+                      Execute Strategy →
                     </button>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          <div className="mt-8 p-4 bg-white/40 dark:bg-black/20 rounded-2xl border border-slate-200/50 dark:border-white/5 text-center">
-            <Activity className="w-8 h-8 text-slate-400 mx-auto mb-2 opacity-50" />
-            <p className="text-sm text-slate-500 dark:text-slate-400">Nexus AI is analyzing your latest transactions. Check back tomorrow for more insights.</p>
-          </div>
-        </motion.div>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white/60 dark:bg-black/40 border border-slate-200/50 dark:border-white/5 hover:border-indigo-500/30 transition-colors group cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="p-2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Optimize Tax Credits</h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">Your engineering expenses appear to qualify for an extra ₹12,000 in R&D credits.</p>
+                    <button className="mt-3 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 duration-300">
+                      View Report →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-6 p-4 bg-white/40 dark:bg-black/20 rounded-2xl border border-slate-200/50 dark:border-white/5 text-center flex items-center gap-3">
+              <Activity className="w-8 h-8 text-slate-400 shrink-0" />
+              <p className="text-xs text-slate-500 dark:text-slate-400 text-left font-medium">Engine is actively monitoring transactions across 12 connected endpoints.</p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -9,18 +9,30 @@ import Documents from "./Documents";
 import Alerts from "./Alerts";
 import Settings from "./Settings";
 
+import Landing from "./Landing";
+import Login from "./Login";
+import Signup from "./Signup";
+import Onboarding from "./Onboarding";
+
 export default function EnhancedApp() {
   return (
-    <MainLayout>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/transactions" element={<Transactions />} />
-        <Route path="/analytics" element={<Analytics />} />
-        <Route path="/documents" element={<Documents />} />
-        <Route path="/alerts" element={<Alerts />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="*" element={<Navigate to="/enhanced" replace />} />
-      </Routes>
-    </MainLayout>
+    <Routes>
+      {/* Public Routes (No Sidebar) */}
+      <Route path="/" element={<Landing />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/onboarding" element={<Onboarding />} />
+
+      {/* Authenticated Routes (With Sidebar) */}
+      <Route path="/dashboard" element={<MainLayout><Dashboard /></MainLayout>} />
+      <Route path="/transactions" element={<MainLayout><Transactions /></MainLayout>} />
+      <Route path="/analytics" element={<MainLayout><Analytics /></MainLayout>} />
+      <Route path="/documents" element={<MainLayout><Documents /></MainLayout>} />
+      <Route path="/alerts" element={<MainLayout><Alerts /></MainLayout>} />
+      <Route path="/settings" element={<MainLayout><Settings /></MainLayout>} />
+      
+      {/* Fallback */}
+      <Route path="*" element={<Navigate to="/enhanced" replace />} />
+    </Routes>
   );
 }
