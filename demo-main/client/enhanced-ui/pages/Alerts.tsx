@@ -90,6 +90,7 @@ const AnomalyCard = ({ title, reason, action, severity, delay }: AlertProps) => 
 };
 
 export default function Alerts() {
+  const currencySymbol = localStorage.getItem('user_currency') || '₹';
   const anomalies: AlertProps[] = [
     { 
       title: 'High Spending Spike Detected', 
@@ -100,7 +101,7 @@ export default function Alerts() {
     },
     { 
       title: 'Duplicate Transaction Alert', 
-      reason: 'A duplicate charge of ₹499 for Netflix has been detected within a short time frame of exactly 4 hours.', 
+      reason: `A duplicate charge of ${currencySymbol}499 for Netflix has been detected within a short time frame of exactly 4 hours.`, 
       action: 'Verify with your bank or service provider for a possible refund. Dispute the charge if unauthorized.',
       severity: 'Medium',
       delay: 0.2
@@ -158,7 +159,7 @@ export default function Alerts() {
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Invest Idle Cash</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">You have ₹45,000 sitting idle. Moving this to a treasury account could yield ~₹1,080/mo.</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">You have {currencySymbol}45,000 sitting idle. Moving this to a treasury account could yield ~{currencySymbol}1,080/mo.</p>
                     <button className="mt-3 text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 duration-300">
                       Execute Strategy →
                     </button>
@@ -173,7 +174,7 @@ export default function Alerts() {
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Optimize Tax Credits</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">Your engineering expenses appear to qualify for an extra ₹12,000 in R&D credits.</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">Your engineering expenses appear to qualify for an extra {currencySymbol}12,000 in R&D credits.</p>
                     <button className="mt-3 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 duration-300">
                       View Report →
                     </button>

@@ -31,17 +31,18 @@ export function CategoryComparisonChart() {
           <YAxis stroke="#888" />
           <Tooltip
             contentStyle={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #475569",
+              backgroundColor: "#1F2C2D",
+              border: "1px solid #5E8F8E",
               borderRadius: "8px",
             }}
           />
           <Legend />
-          <Bar dataKey="march" fill="#3b82f6" radius={[8, 8, 0, 0]} />
-          <Bar dataKey="april" fill="#8b5cf6" radius={[8, 8, 0, 0]} />
-          <Bar dataKey="may" fill="#06b6d4" radius={[8, 8, 0, 0]} />
+          <Bar dataKey="march" fill="#8FBFBD" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={900} animationEasing="ease-out" />
+          <Bar dataKey="april" fill="#A6C7C7" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={1000} animationBegin={100} animationEasing="ease-out" />
+          <Bar dataKey="may" fill="#78AFAE" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={1100} animationBegin={200} animationEasing="ease-out" />
         </BarChart>
       </ResponsiveContainer>
     </div>
   );
 }
+

@@ -31,17 +31,18 @@ export function IncomeExpenseChart() {
           <YAxis stroke="#888" />
           <Tooltip
             contentStyle={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #475569",
+              backgroundColor: "#1F2C2D",
+              border: "1px solid #5E8F8E",
               borderRadius: "8px",
             }}
-            cursor={{ fill: "rgba(59, 130, 246, 0.1)" }}
+            cursor={{ fill: "rgba(143, 191, 189, 0.16)" }}
           />
           <Legend />
-          <Bar dataKey="income" fill="#3b82f6" radius={[8, 8, 0, 0]} />
-          <Bar dataKey="expense" fill="#f59e0b" radius={[8, 8, 0, 0]} />
+          <Bar dataKey="income" fill="#8FBFBD" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={900} animationEasing="ease-out" />
+          <Bar dataKey="expense" fill="#D8EC63" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={1100} animationBegin={120} animationEasing="ease-out" />
         </BarChart>
       </ResponsiveContainer>
     </div>
   );
 }
+

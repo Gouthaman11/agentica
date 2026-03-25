@@ -31,22 +31,26 @@ export function NetBalanceTrendChart() {
           <YAxis stroke="#888" />
           <Tooltip
             contentStyle={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #475569",
+              backgroundColor: "#1F2C2D",
+              border: "1px solid #5E8F8E",
               borderRadius: "8px",
             }}
-            cursor={{ fill: "rgba(59, 130, 246, 0.1)" }}
+            cursor={{ fill: "rgba(143, 191, 189, 0.16)" }}
           />
           <Line
             type="monotone"
             dataKey="balance"
-            stroke="#3b82f6"
+            stroke="#8FBFBD"
             strokeWidth={3}
-            dot={{ fill: "#3b82f6", r: 5 }}
+            dot={{ fill: "#8FBFBD", r: 5 }}
             activeDot={{ r: 7 }}
+            isAnimationActive
+            animationDuration={1100}
+            animationEasing="ease-out"
           />
         </LineChart>
       </ResponsiveContainer>
     </div>
   );
 }
+

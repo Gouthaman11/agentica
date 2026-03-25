@@ -11,89 +11,89 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 13% 20%;
+    --background: 190 20% 96%;
+    --foreground: 210 14% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 13% 20%;
+    --card-foreground: 220 13% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 13% 20%;
+    --popover-foreground: 220 13% 10%;
 
-    --primary: 217 91% 60%;
+    --primary: 188 22% 37%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 220 13% 20%;
+    --secondary: 184 22% 91%;
+    --secondary-foreground: 210 14% 22%;
 
-    --muted: 210 40% 96.1%;
+    --muted: 190 18% 93%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 71 82% 62%;
+    --accent-foreground: 210 14% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 14% 96%;
-    --input: 220 14% 96%;
-    --ring: 217 91% 60%;
+    --border: 188 16% 86%;
+    --input: 188 16% 86%;
+    --ring: 188 24% 48%;
 
-    --radius: 1rem;
+    --radius: 1.25rem;
 
-    --sidebar-background: 220 20% 12%;
+    --sidebar-background: 190 20% 96%;
 
-    --sidebar-foreground: 0 0% 95%;
+    --sidebar-foreground: 210 14% 16%;
 
-    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary: 188 22% 37%;
 
     --sidebar-primary-foreground: 210 40% 98%;
 
-    --sidebar-accent: 217 91% 60%;
+    --sidebar-accent: 71 82% 62%;
 
-    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-accent-foreground: 210 14% 12%;
 
-    --sidebar-border: 220 20% 20%;
+    --sidebar-border: 188 16% 86%;
 
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-ring: 188 24% 48%;
   }
 
   .dark {
-    --background: 220 13% 13%;
+    --background: 220 13% 7%;
     --foreground: 0 0% 98%;
 
-    --card: 220 13% 20%;
+    --card: 220 13% 13%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 220 13% 20%;
+    --popover: 220 13% 13%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 180 50% 60%;
+    --primary-foreground: 220 13% 10%;
 
-    --secondary: 217 32% 25%;
+    --secondary: 220 13% 18%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 217 32% 25%;
+    --muted: 220 13% 18%;
     --muted-foreground: 215 20% 70%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 71 100% 65%;
+    --accent-foreground: 220 13% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 13% 25%;
-    --input: 220 13% 25%;
-    --ring: 217 91% 60%;
-    --sidebar-background: 220 20% 10%;
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: 180 50% 60%;
+    --sidebar-background: 220 13% 8%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 217 91% 60%;
+    --sidebar-primary: 180 50% 60%;
+    --sidebar-primary-foreground: 220 13% 10%;
+    --sidebar-accent: 180 50% 60%;
     --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 220 20% 18%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-border: 220 13% 15%;
+    --sidebar-ring: 180 50% 60%;
   }
 }
 
@@ -104,7 +104,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-family: "Mona Sans Variable", "Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
   }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {

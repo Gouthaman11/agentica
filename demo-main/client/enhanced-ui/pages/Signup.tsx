@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { Zap, Mail, Lock, User, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { Zap, Mail, Lock, User, Eye, EyeOff, ArrowRight, Coins } from 'lucide-react';
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,9 +22,14 @@ export default function Signup() {
   const strengthLabels = ['Weak', 'Weak', 'Fair', 'Good', 'Strong'];
   const strengthColors = ['bg-rose-500', 'bg-rose-500', 'bg-amber-500', 'bg-indigo-500', 'bg-emerald-500'];
 
+  const [fullName, setFullName] = useState('');
+  const [currency, setCurrency] = useState('₹'); // Default to Rupee
+
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
     if (strength >= 3) {
+      localStorage.setItem('user_name', fullName);
+      localStorage.setItem('user_currency', currency);
       navigate('/enhanced/onboarding');
     } else {
       alert("Please choose a stronger password matching the rules.");
@@ -32,10 +37,10 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0A0A0B] flex flex-col justify-center items-center p-6 selection:bg-indigo-500/30 py-12">
+    <div className="min-h-screen bg-[#F5F8F8] dark:bg-[#070707] flex flex-col justify-center items-center p-6 selection:bg-black/10 py-12">
       
-      <Link to="/enhanced" className="absolute top-8 left-8 flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold text-xl tracking-tight hover:opacity-80 transition-opacity">
-        <Zap className="w-5 h-5 fill-indigo-600 dark:fill-indigo-400" />
+      <Link to="/enhanced" className="absolute top-8 left-8 flex items-center gap-2 text-black dark:text-[#ccff00] font-black text-xl tracking-tight hover:opacity-80 transition-opacity">
+        <Zap className="w-5 h-5 fill-black dark:fill-[#ccff00]" />
         LedgerLens AI
       </Link>
 
@@ -69,14 +74,14 @@ export default function Signup() {
           <div>
             <div className="relative">
               <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-              <input type="text" required className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 placeholder:text-slate-400 transition-all font-medium text-sm" placeholder="Full Name" />
+              <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} required className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20 placeholder:text-slate-400 transition-all font-medium text-sm" placeholder="Full Name" />
             </div>
           </div>
 
           <div>
             <div className="relative">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-              <input type="email" required className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 placeholder:text-slate-400 transition-all font-medium text-sm" placeholder="Email Address" />
+              <input type="email" required className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20 placeholder:text-slate-400 transition-all font-medium text-sm" placeholder="Email Address" />
             </div>
           </div>
 
@@ -88,7 +93,7 @@ export default function Signup() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-12 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 placeholder:text-slate-400 transition-all font-medium text-sm"
+                className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-12 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20 placeholder:text-slate-400 transition-all font-medium text-sm"
                 placeholder="Create Password"
               />
               <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
@@ -116,21 +121,45 @@ export default function Signup() {
               </motion.div>
             )}
           </div>
+
+          <div className="pt-2">
+            <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3 ml-1">Preferred Currency</label>
+            <div className="grid grid-cols-3 gap-3">
+               {[
+                 { label: 'Rupee (₹)', value: '₹' },
+                 { label: 'Dollar ($)', value: '$' },
+                 { label: 'Euro (€)', value: '€' }
+               ].map((c) => (
+                 <button
+                   key={c.value}
+                   type="button"
+                   onClick={() => setCurrency(c.value)}
+                   className={`py-3 rounded-2xl text-sm font-bold border transition-all ${
+                     currency === c.value 
+                       ? 'bg-black dark:bg-[#ccff00] border-black dark:border-[#ccff00] text-white dark:text-black shadow-lg shadow-black/20' 
+                       : 'bg-slate-100 dark:bg-black/40 border-transparent text-slate-500 hover:bg-slate-200 dark:hover:bg-white/5'
+                   }`}
+                 >
+                   {c.label}
+                 </button>
+               ))}
+            </div>
+          </div>
           
           <div>
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-              <input type={showPassword ? "text" : "password"} required className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 placeholder:text-slate-400 transition-all font-medium text-sm" placeholder="Confirm Password" />
+              <input type={showPassword ? "text" : "password"} required className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20 placeholder:text-slate-400 transition-all font-medium text-sm" placeholder="Confirm Password" />
             </div>
           </div>
 
-          <button type="submit" className="w-full mt-4 bg-slate-900 dark:bg-indigo-600 text-white py-4 rounded-2xl font-bold text-sm hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-slate-900/10 dark:shadow-indigo-500/20 flex items-center justify-center gap-2">
+          <button type="submit" className="w-full mt-4 bg-black dark:bg-[#ccff00] text-white dark:text-black py-4 rounded-2xl font-bold text-sm hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-black/10 flex items-center justify-center gap-2">
             Create Account <ArrowRight className="w-4 h-4" />
           </button>
         </form>
 
         <p className="text-center font-medium text-sm text-slate-500 mt-8">
-          Already have an account? <Link to="/enhanced/login" className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline">Sign in</Link>
+          Already have an account? <Link to="/enhanced/login" className="text-teal-600 dark:text-[#ccff00] font-bold hover:underline">Sign in</Link>
         </p>
       </motion.div>
     </div>

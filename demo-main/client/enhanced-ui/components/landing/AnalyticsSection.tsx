@@ -11,7 +11,7 @@ export default function AnalyticsSection() {
   return (
     <section ref={containerRef} className="py-32 bg-white text-slate-900 dark:bg-[#0A0A0B] relative min-h-[100vh] flex items-center overflow-hidden">
        {/* Background Decoration */}
-       <div className="absolute top-[30%] -right-[10%] w-[50%] h-[50%] rounded-full bg-blue-50/50 dark:bg-blue-500/5 blur-[120px] pointer-events-none" />
+       <div className="absolute top-[30%] -right-[10%] w-[50%] h-[50%] rounded-full bg-[#EAF4F3]/60 dark:bg-[#6E9F9D]/10 blur-[120px] pointer-events-none" />
 
        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24 relative z-10 font-sans">
           
@@ -22,11 +22,11 @@ export default function AnalyticsSection() {
             transition={{ duration: 1, ease: "easeOut", type: "spring", bounce: 0.3 }}
             className="w-full lg:w-[40%] text-left"
           >
-             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-6 border border-blue-200 dark:border-blue-500/20">
+             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#EAF4F3] dark:bg-[#6E9F9D]/20 text-[#3F6E6D] dark:text-[#A6C7C7] text-xs font-bold uppercase tracking-widest mb-6 border border-[#D5E8E7] dark:border-[#6E9F9D]/30">
                Step 4
              </div>
              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1] dark:text-white">
-                Real-Time <span className="text-blue-600 italic">Analytics</span>
+                Real-Time <span className="text-[#5E8F8E] italic">Analytics</span>
              </h2>
              <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed">
                 Interactive analytics built natively on top of the parsed ledgers. Get real-time cashflow visibility in a beautiful interface.
@@ -49,7 +49,7 @@ export default function AnalyticsSection() {
                         <div className="h-20 md:h-28 border-b border-slate-100 dark:border-white/5 flex items-center px-4 md:px-8 gap-4 md:gap-8 bg-slate-50/30 dark:bg-white/5">
                            <div className="flex flex-col gap-0.5 md:gap-1">
                              <div className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5 whitespace-nowrap">
-                               <LineChart className="w-3 h-3 md:w-4 md:h-4 text-emerald-500" />
+                               <LineChart className="w-3 h-3 md:w-4 md:h-4 text-[#5E8F8E]" />
                                Total Inflow
                              </div>
                              <div className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tighter">
@@ -61,7 +61,7 @@ export default function AnalyticsSection() {
                            
                            <div className="flex flex-col gap-0.5 md:gap-1 pl-4 md:pl-0">
                              <div className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5 whitespace-nowrap">
-                               <PieChart className="w-3 h-3 md:w-4 md:h-4 text-blue-500" />
+                               <PieChart className="w-3 h-3 md:w-4 md:h-4 text-[#8FBFBD]" />
                                Total Outflow
                              </div>
                              <div className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tighter">
@@ -86,7 +86,7 @@ export default function AnalyticsSection() {
                                  initial={{ height: "0%" }}
                                  animate={isInView ? { height: `${height}%` } : { height: "0%" }}
                                  transition={{ duration: 1.2, delay: i * 0.1, ease: "easeOut", type: "spring", bounce: 0.4 }}
-                                 className="w-full bg-gradient-to-t from-blue-600 via-blue-500 to-indigo-400 rounded-t-lg relative group shadow-md z-10 max-w-[60px] md:max-w-[80px]"
+                                 className="w-full bg-gradient-to-t from-[#6E9F9D] via-[#8FBFBD] to-[#A6C7C7] rounded-t-lg relative group shadow-md z-10 max-w-[60px] md:max-w-[80px]"
                               >
                                 <div className="absolute top-0 left-0 w-full h-full bg-white/0 group-hover:bg-white/20 transition-colors rounded-t-lg" />
                                 <motion.div 
@@ -111,7 +111,7 @@ export default function AnalyticsSection() {
                  transition={{ duration: 1.2, type: "spring", bounce: 0.4, delay: 0.8 }}
                  className="absolute -bottom-10 -right-4 md:-bottom-12 md:right-0 w-20 h-20 md:w-32 md:h-32 bg-white dark:bg-[#121213] border border-slate-100 dark:border-white/10 rounded-3xl flex items-center justify-center p-5 md:p-8 shadow-[0_30px_60px_rgba(0,0,0,0.12)] z-30 pointer-events-none"
                >
-                 <LineChart className="w-full h-full text-blue-600" strokeWidth={2.5} />
+                 <LineChart className="w-full h-full text-[#5E8F8E]" strokeWidth={2.5} />
                </motion.div>
             </div>
           </motion.div>
@@ -120,3 +120,4 @@ export default function AnalyticsSection() {
     </section>
   );
 }
+

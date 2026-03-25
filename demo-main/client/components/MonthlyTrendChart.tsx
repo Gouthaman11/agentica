@@ -29,8 +29,8 @@ export function MonthlyTrendChart() {
           <YAxis stroke="#888" />
           <Tooltip
             contentStyle={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #475569",
+              backgroundColor: "#1F2C2D",
+              border: "1px solid #5E8F8E",
               borderRadius: "8px",
             }}
           />
@@ -38,26 +38,38 @@ export function MonthlyTrendChart() {
           <Line
             type="monotone"
             dataKey="income"
-            stroke="#10b981"
+            stroke="#78AFAE"
             strokeWidth={2}
-            dot={{ fill: "#10b981", r: 4 }}
+            dot={{ fill: "#78AFAE", r: 4 }}
+            isAnimationActive
+            animationDuration={900}
+            animationEasing="ease-out"
           />
           <Line
             type="monotone"
             dataKey="spending"
-            stroke="#ef4444"
+            stroke="#A6C7C7"
             strokeWidth={2}
-            dot={{ fill: "#ef4444", r: 4 }}
+            dot={{ fill: "#A6C7C7", r: 4 }}
+            isAnimationActive
+            animationDuration={1000}
+            animationBegin={100}
+            animationEasing="ease-out"
           />
           <Line
             type="monotone"
             dataKey="savings"
-            stroke="#3b82f6"
+            stroke="#8FBFBD"
             strokeWidth={2}
-            dot={{ fill: "#3b82f6", r: 4 }}
+            dot={{ fill: "#8FBFBD", r: 4 }}
+            isAnimationActive
+            animationDuration={1100}
+            animationBegin={200}
+            animationEasing="ease-out"
           />
         </LineChart>
       </ResponsiveContainer>
     </div>
   );
 }
+

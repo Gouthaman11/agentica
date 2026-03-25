@@ -9,11 +9,12 @@ export default function Login() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    localStorage.setItem('user_name', 'Deepan'); // Mocking login set
     navigate('/enhanced/dashboard');
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0A0A0B] flex flex-col justify-center items-center p-6 selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-[#F5F8F8] dark:bg-[#070707] flex flex-col justify-center items-center p-6 selection:bg-black/10">
       
       <Link to="/enhanced" className="absolute bottom-8 flex items-center gap-2 text-slate-400 hover:text-slate-900 dark:text-slate-500 dark:hover:text-white font-medium text-[11px] uppercase tracking-widest transition-all group z-50 hover:bg-slate-100 dark:hover:bg-white/5 px-4 py-2 rounded-full">
         <ArrowRight className="w-3 h-3 rotate-180 transition-transform group-hover:-translate-x-1" />
@@ -39,7 +40,7 @@ export default function Login() {
               <input 
                 type="email" 
                 required
-                className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 placeholder:text-slate-400 transition-all font-medium text-sm"
+                className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20 placeholder:text-slate-400 transition-all font-medium text-sm"
                 placeholder="you@company.com"
               />
             </div>
@@ -48,14 +49,14 @@ export default function Login() {
           <div>
             <div className="flex items-center justify-between mb-2">
               <label className="block text-sm font-bold text-slate-700 dark:text-slate-300">Password</label>
-              <button type="button" className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700">Forgot Password?</button>
+              <button type="button" className="text-xs font-bold text-teal-600 dark:text-[#ccff00] hover:text-teal-700">Forgot Password?</button>
             </div>
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
               <input 
                 type={showPassword ? "text" : "password"} 
                 required
-                className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-12 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 placeholder:text-slate-400 transition-all font-medium text-sm"
+                className="w-full bg-slate-100 dark:bg-black/40 border-none rounded-2xl pl-12 pr-12 py-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20 placeholder:text-slate-400 transition-all font-medium text-sm"
                 placeholder="••••••••"
               />
               <button 
@@ -68,14 +69,14 @@ export default function Login() {
             </div>
           </div>
 
-          <button type="submit" className="w-full bg-slate-900 dark:bg-indigo-600 text-white py-4 rounded-2xl font-bold text-sm hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-slate-900/10 dark:shadow-indigo-500/20 flex items-center justify-center gap-2">
+          <button type="submit" className="w-full bg-black dark:bg-[#ccff00] text-white dark:text-black py-4 rounded-2xl font-bold text-sm hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-black/10 flex items-center justify-center gap-2">
             Sign In <ArrowRight className="w-4 h-4" />
           </button>
         </form>
 
         <div className="mt-8 relative">
           <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200 dark:border-white/10"></div></div>
-          <div className="relative flex justify-center text-sm"><span className="px-4 bg-white dark:bg-[#121213] text-slate-500 font-medium">Or continue with</span></div>
+          <div className="relative flex justify-center text-sm"><span className="px-4 bg-white dark:bg-[#17191E] text-slate-500 font-medium">Or continue with</span></div>
         </div>
 
         <button className="w-full mt-6 bg-white dark:bg-black border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white py-3.5 rounded-2xl font-bold text-sm hover:bg-slate-50 dark:hover:bg-white/5 transition-all shadow-sm flex items-center justify-center gap-3">

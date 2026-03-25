@@ -1,3 +1,4 @@
+import "@fontsource-variable/mona-sans";
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";

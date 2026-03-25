@@ -17,16 +17,16 @@ export default function ExportSection() {
               transition={{ duration: 0.8 }}
             >
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm border border-slate-200">
-                 <DownloadCloud className="w-8 h-8 text-blue-500" />
+                 <DownloadCloud className="w-8 h-8 text-[#5E8F8E]" />
               </div>
               <h2 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-slate-900">
-                 Step 7: <span className="text-emerald-500">Export</span>
+                 Step 7: <span className="text-[#5E8F8E]">Export</span>
               </h2>
               <p className="text-xl md:text-2xl text-slate-500 font-medium mb-10 max-w-lg">
                 Your perfectly structured, AI-categorized ledger. Ready to download as an Excel sheet instantly.
               </p>
               
-              <button className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-full transition-transform hover:scale-105 shadow-[0_10px_30px_rgba(16,185,129,0.3)]">
+              <button className="px-8 py-4 bg-[#5E8F8E] hover:bg-[#4f7f7d] text-white font-bold rounded-full transition-transform hover:scale-105 shadow-[0_10px_30px_rgba(94,143,142,0.3)]">
                  See Demo Export
               </button>
             </motion.div>
@@ -42,9 +42,9 @@ export default function ExportSection() {
               style={{ transformStyle: 'preserve-3d' }}
             >
                {/* Excel Toolbar Mockup */}
-               <div className="h-10 border-b border-emerald-100 bg-emerald-50 flex items-center px-4 gap-2">
-                 <FileSpreadsheet className="w-5 h-5 text-emerald-600" />
-                 <span className="text-sm font-bold text-emerald-800">Ledger_Export.xlsx</span>
+               <div className="h-10 border-b border-[#D5E8E7] bg-[#EDF6F5] flex items-center px-4 gap-2">
+                 <FileSpreadsheet className="w-5 h-5 text-[#5E8F8E]" />
+                 <span className="text-sm font-bold text-[#3F6E6D]">Ledger_Export.xlsx</span>
                </div>
                
                {/* Excel Grid Mockup */}
@@ -71,7 +71,7 @@ export default function ExportSection() {
             </motion.div>
 
             {/* Glowing Backdrop */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-emerald-100/60 blur-[100px] rounded-full pointer-events-none z-10" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#EAF4F3]/80 blur-[100px] rounded-full pointer-events-none z-10" />
          </div>
       </div>
     </section>

@@ -32,11 +32,11 @@ export default function CategorizationSection() {
            transition={{ duration: 1, ease: "easeOut", type: "spring", bounce: 0.3 }}
            className="w-full lg:w-[40%] text-left"
          >
-           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-widest mb-6 border border-emerald-200">
+           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#EAF4F3] text-[#3F6E6D] text-xs font-bold uppercase tracking-widest mb-6 border border-[#D5E8E7]">
              Step 3
            </div>
            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-6 leading-[1.1]">
-              Deep <span className="text-emerald-500">Classification</span>
+              Deep <span className="text-[#5E8F8E]">Classification</span>
            </h2>
            <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed max-w-lg">
              Our AI maps ambiguous transaction strings to standardized financial ledgers with extreme confidence.
@@ -87,14 +87,14 @@ export default function CategorizationSection() {
                           initial={{ opacity: 0, rotate: -90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, scale: 0 }}
                           className="w-full h-full flex items-center justify-center"
                         >
-                          <BrainCircuit className="w-8 h-8 text-emerald-500 animate-pulse" />
-                          <span className="absolute w-full h-full rounded-full border-[3px] border-emerald-50 border-t-emerald-500 animate-[spin_1.5s_linear_infinite]" />
+                          <BrainCircuit className="w-8 h-8 text-[#5E8F8E] animate-pulse" />
+                          <span className="absolute w-full h-full rounded-full border-[3px] border-[#EDF6F5] border-t-[#5E8F8E] animate-[spin_1.5s_linear_infinite]" />
                         </motion.div>
                      ) : phase === 2 ? (
                         <motion.div 
                           key="done"
                           initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-                          className="w-full h-full bg-emerald-500 rounded-full flex items-center justify-center scale-[1.05]"
+                          className="w-full h-full bg-[#6E9F9D] rounded-full flex items-center justify-center scale-[1.05]"
                         >
                           <ArrowRight className="w-8 h-8 text-white rotate-90" />
                         </motion.div>
@@ -122,13 +122,13 @@ export default function CategorizationSection() {
                        initial={{ opacity: 0, y: -20, scale: 0.9 }}
                        animate={{ opacity: 1, y: 0, scale: 1 }}
                        transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
-                       className="w-full bg-white rounded-3xl p-6 md:p-8 shadow-[0_20px_50px_rgba(16,185,129,0.15)] border border-emerald-100 relative overflow-hidden"
+                       className="w-full bg-white rounded-3xl p-6 md:p-8 shadow-[0_20px_50px_rgba(110,159,157,0.2)] border border-[#D5E8E7] relative overflow-hidden"
                      >
-                       <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-white pointer-events-none" />
+                       <div className="absolute inset-0 bg-gradient-to-br from-[#EDF6F5] to-white pointer-events-none" />
                        
                        <div className="relative z-10 flex flex-col gap-4">
                           <div className="flex flex-col">
-                             <div className="text-xs font-bold text-emerald-600 uppercase tracking-widest flex items-center gap-1 mb-1">
+                             <div className="text-xs font-bold text-[#5E8F8E] uppercase tracking-widest flex items-center gap-1 mb-1">
                                <CornerDownRight className="w-4 h-4"/> Mapped Category
                              </div>
                              <div className="text-3xl md:text-5xl font-extrabold text-slate-800 tracking-tight">
@@ -140,7 +140,7 @@ export default function CategorizationSection() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.4 }}
-                            className="inline-flex w-fit px-4 py-2 bg-emerald-600 rounded-full text-sm font-bold text-white items-center gap-2 shadow-sm"
+                            className="inline-flex w-fit px-4 py-2 bg-[#5E8F8E] rounded-full text-sm font-bold text-white items-center gap-2 shadow-sm"
                           >
                             <Sparkles className="w-4 h-4 fill-white animate-pulse" />
                             99.9% Context Match

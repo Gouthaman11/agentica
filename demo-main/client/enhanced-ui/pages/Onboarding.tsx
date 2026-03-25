@@ -10,8 +10,13 @@ export default function Onboarding() {
   const navigate = useNavigate();
 
   const handleNext = () => {
-    if (step < 3) setStep(step + 1);
-    else navigate('/enhanced/dashboard');
+    if (step < 3) {
+      setStep(step + 1);
+    } else {
+      const symbols: Record<string, string> = { 'INR': '₹', 'USD': '$', 'EUR': '€', 'GBP': '£' };
+      localStorage.setItem('user_currency', symbols[currency] || '₹');
+      navigate('/enhanced/dashboard');
+    }
   };
 
   return (

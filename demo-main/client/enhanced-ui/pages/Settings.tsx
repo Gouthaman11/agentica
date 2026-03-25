@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { User, Bell, Shield, Wallet, CreditCard, LogOut } from 'lucide-react';
 
 export default function Settings() {
+  const userName = localStorage.getItem('user_name') || 'Deepan S.';
+  const initials = userName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="mb-8">
@@ -23,7 +26,7 @@ export default function Settings() {
           ].map((item) => (
             <button key={item.label} className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
               item.active 
-                ? 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-medium' 
+                ? 'bg-[#EDF6F5] dark:bg-[#6E9F9D]/15 text-[#5E8F8E] dark:text-[#A6C7C7] font-medium' 
                 : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5'
             }`}>
               <item.icon className="w-4 h-4" />
@@ -49,8 +52,8 @@ export default function Settings() {
             <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-6">Profile Settings</h2>
             
             <div className="flex items-center gap-6 mb-8">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-                DS
+              <div className="w-20 h-20 rounded-full bg-gradient-to-r from-[#6E9F9D] to-[#8FBFBD] flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-[#8FBFBD]/25">
+                {initials}
               </div>
               <div>
                 <button className="px-4 py-2 border border-slate-200 dark:border-white/10 rounded-xl text-sm font-medium bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
@@ -63,44 +66,26 @@ export default function Settings() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label className="text-sm font-medium text-slate-700 dark:text-slate-300">First Name</label>
-                <input type="text" defaultValue="Deepan" className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50" />
+                <input type="text" defaultValue={userName.split(' ')[0]}className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#6E9F9D]/50" />
               </div>
               <div className="space-y-1.5">
                 <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Last Name</label>
-                <input type="text" defaultValue="S." className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50" />
+                <input type="text" defaultValue={userName.split(' ').length > 1 ? userName.split(' ')[1] : ''} className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#6E9F9D]/50" />
               </div>
               <div className="space-y-1.5 md:col-span-2">
                 <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Email Address</label>
-                <input type="email" defaultValue="nexus@example.com" className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50" />
+                <input type="email" defaultValue="nexus@example.com" className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#6E9F9D]/50" />
               </div>
             </div>
 
             <div className="mt-8 flex justify-end">
-              <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all active:scale-95 shadow-lg shadow-indigo-500/20">
+              <button className="bg-[#5E8F8E] hover:bg-[#4D7E7D] text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all active:scale-95 shadow-lg shadow-[#8FBFBD]/25">
                 Save Changes
               </button>
             </div>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="p-6 rounded-3xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/50 dark:border-white/5 shadow-sm"
-          >
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Appearance</h2>
-            <div className="flex items-center justify-between p-4 border border-slate-200 dark:border-white/10 rounded-2xl bg-slate-50/50 dark:bg-black/20">
-              <div>
-                <p className="font-medium text-sm text-slate-900 dark:text-white">Theme Preference</p>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Switch between light and dark themes.</p>
-              </div>
-              <select className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-xl px-3 py-1.5 text-sm text-slate-900 dark:text-white outline-none">
-                <option>System Default</option>
-                <option>Light Theme</option>
-                <option>Dark Theme</option>
-              </select>
-            </div>
-          </motion.div>
+
         </div>
       </div>
     </div>

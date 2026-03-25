@@ -2,11 +2,11 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const MOCK_DATA = [
-  { date: "Mar 01", desc: "NETFLIX COM", debit: "₹649.00", credit: "-", balance: "₹1,24,500" },
-  { date: "Mar 02", desc: "SWIGGY*INSTAMART", debit: "₹1,240.00", credit: "-", balance: "₹1,23,260" },
-  { date: "Mar 05", desc: "SALARY CREDITED", debit: "-", credit: "₹1,50,000", balance: "₹2,73,260" },
-  { date: "Mar 08", desc: "UBER RIDES", debit: "₹450.00", credit: "-", balance: "₹2,72,810" },
-  { date: "Mar 10", desc: "STARBUCK", debit: "₹850.00", credit: "-", balance: "₹2,71,960" }
+  { date: "Mar 23", desc: "STRIPE PAYOUT", debit: "-", credit: "₹32,000.00", balance: "₹1,24,500" },
+  { date: "Mar 22", desc: "AWS SERVICES", debit: "₹4,500.00", credit: "-", balance: "₹1,20,000" },
+  { date: "Mar 20", desc: "SWIGGY CORPORATE", debit: "₹1,250.00", credit: "-", balance: "₹1,18,750" },
+  { date: "Mar 18", desc: "WEWORK OFFICE", debit: "₹15,000.00", credit: "-", balance: "₹1,03,750" },
+  { date: "Mar 15", desc: "CLIENT INVOICE #42", debit: "-", credit: "₹45,000.00", balance: "₹1,48,750" }
 ];
 
 export default function ExtractionSection() {
@@ -16,7 +16,7 @@ export default function ExtractionSection() {
   return (
     <section ref={containerRef} className="relative bg-white min-h-[100vh] py-32 overflow-hidden flex items-center">
       {/* Subtle Background Glow fixed alignment */}
-      <div className="absolute top-1/2 left-[30%] w-[600px] h-[600px] bg-indigo-50/70 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-1/2 left-[30%] w-[600px] h-[600px] bg-[#EAF4F3]/80 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24 relative z-10">
         
@@ -27,11 +27,11 @@ export default function ExtractionSection() {
            transition={{ duration: 1, ease: "easeOut", type: "spring", bounce: 0.3 }}
            className="w-full lg:w-[40%] text-left"
         >
-           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-widest mb-6 border border-indigo-200">
+           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#EAF4F3] text-[#3F6E6D] text-xs font-bold uppercase tracking-widest mb-6 border border-[#D5E8E7]">
              Step 2
            </div>
            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-6 leading-[1.1]">
-              Instant <span className="text-indigo-600">Extraction</span>
+              Instant <span className="text-[#5E8F8E]">Extraction</span>
            </h2>
            <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed max-w-lg">
               Watch as unstructured chaos perfectly aligns into structured financial rows, error-free.
@@ -83,7 +83,7 @@ export default function ExtractionSection() {
                     <div className="text-slate-500 font-medium text-[10px] md:text-sm">{row.date}</div>
                     <div className="text-slate-900 font-bold text-[10px] md:text-sm truncate pr-2">{row.desc}</div>
                     <div className="text-red-500 font-medium text-[10px] md:text-sm">{row.debit}</div>
-                    <div className="text-emerald-500 font-medium text-[10px] md:text-sm">{row.credit}</div>
+                    <div className="text-[#5E8F8E] font-medium text-[10px] md:text-sm">{row.credit}</div>
                     <div className="text-slate-900 font-bold text-[10px] md:text-sm">{row.balance}</div>
                   </motion.div>
                 ))}
