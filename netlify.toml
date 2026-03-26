@@ -1,6 +1,6 @@
 [build]
 command = "npm run build:client"
-functions = "netlify/functions"
+functions = "backend/netlify/functions"
 publish = "dist/spa"
 
 
@@ -12,3 +12,4 @@ force = true
 from = "/api/*"
 status = 200
 to = "/.netlify/functions/api/:splat"
+

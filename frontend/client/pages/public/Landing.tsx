@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Zap, ArrowRight } from 'lucide-react';
-import SmoothScroll from '../components/landing/SmoothScroll';
-import HeroSection from '../components/landing/HeroSection';
-import UploadSection from '../components/landing/UploadSection';
-import ExtractionSection from '../components/landing/ExtractionSection';
-import CategorizationSection from '../components/landing/CategorizationSection';
-import AnalyticsSection from '../components/landing/AnalyticsSection';
-import TimelineSection from '../components/landing/TimelineSection';
-import TransactionSection from '../components/landing/TransactionSection';
-import ExportSection from '../components/landing/ExportSection';
-import InsightsSection from '../components/landing/InsightsSection';
+import SmoothScroll from '../../components/landing/SmoothScroll';
+import HeroSection from '../../components/landing/HeroSection';
+import UploadSection from '../../components/landing/UploadSection';
+import ExtractionSection from '../../components/landing/ExtractionSection';
+import CategorizationSection from '../../components/landing/CategorizationSection';
+import AnalyticsSection from '../../components/landing/AnalyticsSection';
+import TimelineSection from '../../components/landing/TimelineSection';
+import TransactionSection from '../../components/landing/TransactionSection';
+import ExportSection from '../../components/landing/ExportSection';
+import InsightsSection from '../../components/landing/InsightsSection';
 
 export default function Landing() {
   
@@ -81,3 +81,4 @@ export default function Landing() {
     </SmoothScroll>
   );
 }
+

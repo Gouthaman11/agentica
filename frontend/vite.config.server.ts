@@ -5,12 +5,12 @@ import path from "path";
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "server/node-build.ts"),
+      entry: path.resolve(__dirname, "../backend/server/node-build.ts"),
       name: "server",
       fileName: "production",
       formats: ["es"],
     },
-    outDir: "dist/server",
+    outDir: "../dist/server",
     target: "node22",
     ssr: true,
     rollupOptions: {
@@ -44,7 +44,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./client"),
-      "@shared": path.resolve(__dirname, "./shared"),
+      "@shared": path.resolve(__dirname, "../backend/shared"),
     },
   },
   define: {

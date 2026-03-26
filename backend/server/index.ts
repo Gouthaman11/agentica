@@ -2,9 +2,12 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { authRouter } from "./routes/auth";
+import { checkDbConnection } from "./db";
 
 export function createServer() {
   const app = express();
+  checkDbConnection();
 
   // Middleware
   app.use(cors());
@@ -18,6 +21,7 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+  app.use("/api", authRouter);
 
   return app;
 }

@@ -1,4 +1,4 @@
-ï»¿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { User, Mail, Lock, Phone, Eye, EyeOff, ArrowRight, Zap } from 'lucide-react';
@@ -13,7 +13,10 @@ export default function Signup() {
   const [username, setUsername] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
-  const [currency, setCurrency] = useState('\u20B9');
+  const [currency, setCurrency] = useState('?');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,23 +31,56 @@ export default function Signup() {
   const strengthLabels = ['Weak', 'Weak', 'Fair', 'Good', 'Strong'];
   const strengthColors = ['bg-rose-500', 'bg-rose-500', 'bg-amber-500', 'bg-teal-500', 'bg-emerald-500'];
 
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
+    setSuccess('');
+
     if (strength < 3) {
-      alert('Please choose a stronger password matching the rules.');
+      setError('Please choose a stronger password matching the rules.');
       return;
     }
     if (password !== confirmPassword) {
-      alert('Password and Confirm Password do not match.');
+      setError('Password and Confirm Password do not match.');
       return;
     }
 
-    localStorage.setItem('user_name', fullName || 'User');
-    localStorage.setItem('user_username', username);
-    localStorage.setItem('user_email', email);
-    localStorage.setItem('user_phone', phoneNumber);
-    localStorage.setItem('user_currency', currency);
-    navigate('/enhanced/onboarding');
+    setLoading(true);
+
+    try {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fullName,
+          username,
+          email,
+          password,
+          phone: phoneNumber,
+          currency,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.message || 'Signup failed.');
+      }
+
+      localStorage.setItem('user_name', fullName || 'User');
+      localStorage.setItem('user_username', username);
+      localStorage.setItem('user_email', email);
+      localStorage.setItem('user_phone', phoneNumber);
+      localStorage.setItem('user_currency', currency);
+
+      setSuccess('Account created successfully. Please sign in.');
+      setTimeout(() => navigate('/enhanced/login'), 800);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Unable to sign up.';
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -178,10 +214,10 @@ export default function Signup() {
                 <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">Preferred currency</label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {[
-                    { label: '\u20B9 INR', value: '\u20B9' },
+                    { label: '? INR', value: '?' },
                     { label: '$ USD', value: '$' },
-                    { label: 'â‚¬ EUR', value: 'â‚¬' },
-                    { label: 'Â£ GBP', value: 'Â£' },
+                    { label: '€ EUR', value: '€' },
+                    { label: '£ GBP', value: '£' },
                   ].map((c) => (
                     <button
                       key={c.value}
@@ -200,10 +236,14 @@ export default function Signup() {
 
               <button
                 type="submit"
-                className="w-full h-12 rounded-full bg-black text-white font-bold text-sm flex items-center justify-center gap-2 hover:opacity-95 transition"
+                disabled={loading}
+                className="w-full h-12 rounded-full bg-black text-white font-bold text-sm flex items-center justify-center gap-2 hover:opacity-95 transition disabled:opacity-60"
               >
-                Create Account <ArrowRight className="w-4 h-4" />
+                {loading ? 'Creating Account...' : (<><span>Create Account</span><ArrowRight className="w-4 h-4" /></>)}
               </button>
+
+              {error && <p className="text-sm font-medium text-rose-600">{error}</p>}
+              {success && <p className="text-sm font-medium text-emerald-600">{success}</p>}
             </form>
 
             <p className="mt-6 text-sm text-slate-500">
@@ -233,4 +273,3 @@ export default function Signup() {
     </div>
   );
 }
-

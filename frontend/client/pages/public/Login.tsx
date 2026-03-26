@@ -1,16 +1,47 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, ArrowRight, Zap } from 'lucide-react';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem('user_name', 'Deepan');
-    navigate('/enhanced/dashboard');
+    setError('');
+    setLoading(true);
+
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.message || 'Login failed.');
+      }
+
+      localStorage.setItem('auth_token', data.token);
+      localStorage.setItem('user_name', data.user?.name || 'User');
+      localStorage.setItem('user_username', data.user?.username || '');
+      localStorage.setItem('user_email', data.user?.email || '');
+      localStorage.setItem('user_phone', data.user?.phone || '');
+      localStorage.setItem('user_currency', data.user?.currency || '?');
+      navigate('/enhanced/dashboard');
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Unable to login.';
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -42,6 +73,8 @@ export default function Login() {
                   <input
                     type="email"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@company.com"
                     className="w-full h-12 rounded-full border border-slate-200 bg-white pl-12 pr-4 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-lime-300"
                   />
@@ -58,6 +91,8 @@ export default function Login() {
                   <input
                     type={showPassword ? 'text' : 'password'}
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
                     className="w-full h-12 rounded-full border border-slate-200 bg-white pl-12 pr-12 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-lime-300"
                   />
@@ -73,10 +108,13 @@ export default function Login() {
 
               <button
                 type="submit"
-                className="w-full h-12 rounded-full bg-black text-white font-bold text-sm flex items-center justify-center gap-2 hover:opacity-95 transition"
+                disabled={loading}
+                className="w-full h-12 rounded-full bg-black text-white font-bold text-sm flex items-center justify-center gap-2 hover:opacity-95 transition disabled:opacity-60"
               >
-                Sign In <ArrowRight className="w-4 h-4" />
+                {loading ? 'Signing in...' : (<><span>Sign In</span><ArrowRight className="w-4 h-4" /></>)}
               </button>
+
+              {error && <p className="text-sm font-medium text-rose-600">{error}</p>}
             </form>
 
             <p className="mt-8 text-sm text-slate-500">
@@ -115,4 +153,3 @@ export default function Login() {
     </div>
   );
 }
-

@@ -2,19 +2,19 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 
-import Dashboard from "./Dashboard";
-import Transactions from "./Transactions";
-import Analytics from "./Analytics";
-import Documents from "./Documents";
-import Alerts from "./Alerts";
-import Settings from "./Settings";
+import Dashboard from "./app/Dashboard";
+import Transactions from "./app/Transactions";
+import Analytics from "./app/Analytics";
+import Documents from "./app/Documents";
+import Alerts from "./app/Alerts";
+import Settings from "./app/Settings";
 
-import Landing from "./Landing";
-import Login from "./Login";
-import Signup from "./Signup";
-import Onboarding from "./Onboarding";
+import Landing from "./public/Landing";
+import Login from "./public/Login";
+import Signup from "./public/Signup";
+import Onboarding from "./public/Onboarding";
 
-export default function EnhancedApp() {
+export default function AppRoutes() {
   return (
     <Routes>
       {/* Public Routes (No Sidebar) */}
@@ -36,3 +36,4 @@ export default function EnhancedApp() {
     </Routes>
   );
 }
+
