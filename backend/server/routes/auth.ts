@@ -27,6 +27,7 @@ interface UserRow extends RowDataPacket {
   password: string;
   phone: string;
   currency: string;
+  profile_picture_url: string | null;
 }
 
 const authRouter = Router();
@@ -102,6 +103,7 @@ authRouter.post("/login", async (req, res) => {
         email: user.email,
         phone: user.phone,
         currency: user.currency,
+        profilePictureUrl: user.profile_picture_url,
       },
     });
   } catch (error) {

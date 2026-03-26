@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { authRouter } from "./routes/auth";
+import { usersRouter } from "./routes/users";
 import { checkDbConnection } from "./db";
 
 export function createServer() {
@@ -22,6 +23,7 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
   app.use("/api", authRouter);
+  app.use("/api/users", usersRouter);
 
   return app;
 }
