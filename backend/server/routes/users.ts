@@ -1,70 +1,111 @@
 import { Router } from "express";
-import { PutObjectCommand } from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { ResultSetHeader } from "mysql2";
+import { ListObjectsV2Command, PutObjectCommand } from "@aws-sdk/client-s3";
 
 import { s3Client, bucketName, region } from "../s3";
-import { db } from "../db";
 
 export const usersRouter = Router();
 
-// 1. Generate an S3 Pre-signed URL for client-side direct upload
-usersRouter.post("/upload-url", async (req, res) => {
-  const { fileName, fileType, userId } = req.body;
-  if (!fileName || !userId) {
-    return res.status(400).json({ message: "File name and userId are required." });
-  }
+function buildObjectKey(fileName: string, userId?: string) {
+  const safeUserId = String(userId || "guest").replace(/[^a-zA-Z0-9_-]/g, "");
+  const safeFileName = String(fileName).replace(/[^a-zA-Z0-9._-]/g, "_");
+  return `users/${safeUserId}/documents/${Date.now()}_${safeFileName}`;
+}
 
-  // Generate a unique object key within the S3 bucket structured around the user
-  const key = `users/${userId}/avatar_${Date.now()}_${fileName}`;
+function buildDocumentsPrefix(userId?: string) {
+  const safeUserId = String(userId || "guest").replace(/[^a-zA-Z0-9_-]/g, "");
+  return `users/${safeUserId}/documents/`;
+}
+
+usersRouter.get("/documents", async (req, res) => {
+  const userId = String(req.query.userId || "guest");
+  const prefix = buildDocumentsPrefix(userId);
 
   try {
+    const result = await s3Client.send(
+      new ListObjectsV2Command({
+        Bucket: bucketName,
+        Prefix: prefix,
+      }),
+    );
+
+    const documents = (result.Contents || [])
+      .filter((item) => item.Key)
+      .sort((a, b) => {
+        const aTime = a.LastModified ? new Date(a.LastModified).getTime() : 0;
+        const bTime = b.LastModified ? new Date(b.LastModified).getTime() : 0;
+        return bTime - aTime;
+      })
+      .map((item) => {
+        const key = String(item.Key);
+        const encodedKey = key
+          .split("/")
+          .map((part) => encodeURIComponent(part))
+          .join("/");
+
+        return {
+          key,
+          name: key.split("/").pop(),
+          size: item.Size ?? 0,
+          lastModified: item.LastModified ?? null,
+          publicUrl: `https://${bucketName}.s3.${region}.amazonaws.com/${encodedKey}`,
+        };
+      });
+
+    return res.status(200).json({ documents });
+  } catch (error) {
+    console.error("S3 List Error:", error);
+    const awsError = error as { message?: string; name?: string };
+    return res.status(500).json({
+      message: awsError.message || "Failed to list documents from S3.",
+      code: awsError.name || "S3ListError",
+    });
+  }
+});
+
+usersRouter.post("/upload", async (req, res) => {
+  const { fileName, fileType, userId, fileContentBase64 } = req.body;
+  if (!fileName) {
+    return res.status(400).json({ message: "File name is required." });
+  }
+  if (!fileContentBase64) {
+    return res.status(400).json({ message: "File content is required." });
+  }
+
+  const key = buildObjectKey(String(fileName), userId);
+
+  try {
+    const fileBuffer = Buffer.from(String(fileContentBase64), "base64");
     const command = new PutObjectCommand({
       Bucket: bucketName,
       Key: key,
       ContentType: fileType || "application/octet-stream",
+      Body: fileBuffer,
     });
 
-    // Generate a pre-signed URL valid for 60 minutes
-    const uploadUrl = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
-    
-    // Construct the final public URL assuming the bucket objects can be read publicly. 
-    // In strict enterprise setups, you'd generate GET signed URLs instead.
+    await s3Client.send(command);
+
     const publicUrl = `https://${bucketName}.s3.${region}.amazonaws.com/${key}`;
 
-    return res.status(200).json({ uploadUrl, key, publicUrl });
+    return res.status(200).json({ key, publicUrl });
   } catch (error) {
-    console.error("Presigned URL Error:", error);
-    return res.status(500).json({ message: "Failed to generate S3 upload URL.", error });
-  }
-});
+    console.error("S3 Upload Error:", error);
+    const awsError = error as {
+      name?: string;
+      message?: string;
+      Code?: string;
+      code?: string;
+      $metadata?: { httpStatusCode?: number };
+    };
+    const detail =
+      awsError.message ||
+      awsError.Code ||
+      awsError.code ||
+      "Failed to upload file to S3.";
 
-// 2. Update the SQL DB with the newly uploaded S3 File URL
-usersRouter.put("/:userId/profile-picture", async (req, res) => {
-  const { userId } = req.params;
-  const { profilePictureUrl } = req.body;
-
-  if (!profilePictureUrl) {
-    return res.status(400).json({ message: "Profile picture URL is required." });
-  }
-
-  try {
-    // Update the SQL table with the confirmed S3 upload link
-    const [result] = await db.query<ResultSetHeader>(
-      "UPDATE users SET profile_picture_url = ? WHERE id = ?",
-      [profilePictureUrl, userId]
-    );
-
-    if (result.affectedRows === 0) {
-      return res.status(404).json({ message: "User not found within the database." });
-    }
-
-    return res.status(200).json({ 
-      message: "Profile picture securely attached to user.", 
-      profilePictureUrl 
+    return res.status(500).json({
+      message: detail,
+      code: awsError.name || awsError.Code || awsError.code || "S3UploadError",
+      statusCode: awsError.$metadata?.httpStatusCode ?? 500,
     });
-  } catch (error) {
-    console.error("DB Update Error:", error);
-    return res.status(500).json({ message: "Failed to attach file to user record.", error });
   }
 });
