@@ -3,6 +3,25 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, ArrowRight, Zap } from 'lucide-react';
 
+const DEMO_USERS = [
+  {
+    email: 'demo@ledgerlens.com',
+    password: 'Demo@123',
+    name: 'Demo User',
+    username: 'demo_user',
+    phone: '9999999999',
+    currency: 'INR',
+  },
+  {
+    email: 'analyst@ledgerlens.com',
+    password: 'Analyst@123',
+    name: 'Finance Analyst',
+    username: 'finance_analyst',
+    phone: '8888888888',
+    currency: 'USD',
+  },
+];
+
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
@@ -15,6 +34,22 @@ export default function Login() {
     e.preventDefault();
     setError('');
     setLoading(true);
+
+    const demoUser = DEMO_USERS.find(
+      (u) => u.email.toLowerCase() === email.toLowerCase() && u.password === password,
+    );
+
+    if (demoUser) {
+      localStorage.setItem('auth_token', 'demo-token');
+      localStorage.setItem('user_name', demoUser.name);
+      localStorage.setItem('user_username', demoUser.username);
+      localStorage.setItem('user_email', demoUser.email);
+      localStorage.setItem('user_phone', demoUser.phone);
+      localStorage.setItem('user_currency', demoUser.currency);
+      setLoading(false);
+      navigate('/enhanced/dashboard');
+      return;
+    }
 
     try {
       const apiBase = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
@@ -65,6 +100,12 @@ export default function Login() {
             className="w-full max-w-md my-auto"
           >
             <h1 className="text-5xl font-extrabold tracking-tight text-black leading-[1.05]">Welcome back</h1>
+
+            <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm">
+              <p className="font-bold text-slate-700">Demo Login (works without backend)</p>
+              <p className="text-slate-600 mt-1">1. demo@ledgerlens.com / Demo@123</p>
+              <p className="text-slate-600">2. analyst@ledgerlens.com / Analyst@123</p>
+            </div>
 
             <form onSubmit={handleLogin} className="mt-10 space-y-5">
               <div>
@@ -154,5 +195,3 @@ export default function Login() {
     </div>
   );
 }
-
-
