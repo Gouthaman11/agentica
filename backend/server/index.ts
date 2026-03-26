@@ -1,9 +1,15 @@
-import "dotenv/config";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { authRouter } from "./routes/auth";
 import { checkDbConnection } from "./db";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
+dotenv.config();
 
 export function createServer() {
   const app = express();

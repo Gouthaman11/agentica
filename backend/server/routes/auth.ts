@@ -62,7 +62,11 @@ authRouter.post("/signup", async (req, res) => {
       userId: result.insertId,
     });
   } catch (error) {
-    return res.status(500).json({ message: "Signup failed.", error });
+    const message =
+      error && typeof error === "object" && "sqlMessage" in error
+        ? String((error as { sqlMessage?: string }).sqlMessage)
+        : "Signup failed.";
+    return res.status(500).json({ message });
   }
 });
 
@@ -105,7 +109,11 @@ authRouter.post("/login", async (req, res) => {
       },
     });
   } catch (error) {
-    return res.status(500).json({ message: "Login failed.", error });
+    const message =
+      error && typeof error === "object" && "sqlMessage" in error
+        ? String((error as { sqlMessage?: string }).sqlMessage)
+        : "Login failed.";
+    return res.status(500).json({ message });
   }
 });
 

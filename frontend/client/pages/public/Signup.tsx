@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+ï»¿import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { User, Mail, Lock, Phone, Eye, EyeOff, ArrowRight, Zap } from 'lucide-react';
@@ -13,7 +13,7 @@ export default function Signup() {
   const [username, setUsername] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
-  const [currency, setCurrency] = useState('?');
+  const [currency, setCurrency] = useState('INR');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
@@ -48,7 +48,8 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/signup', {
+      const apiBase = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+      const response = await fetch(`${apiBase}/api/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -214,10 +215,10 @@ export default function Signup() {
                 <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">Preferred currency</label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {[
-                    { label: '? INR', value: '?' },
-                    { label: '$ USD', value: '$' },
-                    { label: '€ EUR', value: '€' },
-                    { label: '£ GBP', value: '£' },
+                    { label: 'INR', value: 'INR' },
+                    { label: 'USD', value: 'USD' },
+                    { label: 'EUR', value: 'EUR' },
+                    { label: 'GBP', value: 'GBP' },
                   ].map((c) => (
                     <button
                       key={c.value}
@@ -273,3 +274,5 @@ export default function Signup() {
     </div>
   );
 }
+
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, ArrowRight, Zap } from 'lucide-react';
@@ -17,7 +17,8 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/login', {
+      const apiBase = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+      const response = await fetch(`${apiBase}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -34,7 +35,7 @@ export default function Login() {
       localStorage.setItem('user_username', data.user?.username || '');
       localStorage.setItem('user_email', data.user?.email || '');
       localStorage.setItem('user_phone', data.user?.phone || '');
-      localStorage.setItem('user_currency', data.user?.currency || '?');
+      localStorage.setItem('user_currency', data.user?.currency || 'INR');
       navigate('/enhanced/dashboard');
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Unable to login.';
@@ -153,3 +154,5 @@ export default function Login() {
     </div>
   );
 }
+
+
