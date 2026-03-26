@@ -101,10 +101,10 @@
     font-family: "Montserrat", sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "Bebas Neue", sans-serif;
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: "Bebas Neue", sans-serif !important;
     text-transform: uppercase;
-    font-weight: 400; /* Bebas Neue looks best without bold weights */
+    font-weight: 400 !important; /* Bebas Neue looks best without bold weights */
   }
 
   :where(p, span, li, a, button, label, td, th) {
