@@ -1,0 +1,9 @@
+{
+  "name": "ledgerlens-backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node ../node_modules/tsx/dist/cli.mjs server/standalone.ts",
+    "dev": "node ../node_modules/tsx/dist/cli.mjs watch server/standalone.ts"
+  }
+}

@@ -1,0 +1,146 @@
+/** @import must precede all other statements */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme - Premium Fintech (LedgerLens AI)
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    --primary: 252 90% 65%; /* purple roughly RGB 115,83,246 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 67% 94%; /* lavender */
+    --secondary-foreground: 252 90% 20%;
+
+    --muted: 220 10% 96%; /* soft light gray */
+    --muted-foreground: 220 15% 40%; /* neutral gray */
+
+    --accent: 197 71% 73%; /* sky blue */
+    --accent-foreground: 0 0% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 10% 90%;
+    --input: 220 10% 90%;
+    --ring: 252 90% 65%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 252 90% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 67% 94%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 220 10% 90%;
+    --sidebar-ring: 252 90% 65%;
+  }
+
+  .dark {
+    --background: 220 7% 12%; /* graphite black */
+    --foreground: 0 0% 100%; /* white */
+
+    --card: 220 7% 16%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 220 7% 16%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 252 90% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 300 24% 25%; /* pale purple dark variant */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 10% 26%; /* dark neutral gray */
+    --muted-foreground: 220 10% 70%; /* light gray text */
+
+    --accent: 197 71% 30%; /* sky blue dark variant */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 10% 26%;
+    --input: 220 10% 26%;
+    --ring: 252 90% 65%;
+    
+    --sidebar-background: 220 7% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 252 90% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 300 24% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 10% 26%;
+    --sidebar-ring: 252 90% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    font-weight: 400; /* Bebas Neue looks best without bold weights */
+  }
+
+  :where(p, span, li, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-background/70 backdrop-blur-md border border-border/20;
+  }
+
+  .card-hover {
+    @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl; /* Clean and crisp interaction */
+  }
+
+  .icon-button {
+    @apply p-2.5 rounded-lg hover:bg-secondary transition-colors text-primary;
+  }
+
+  .smooth-fade {
+    @apply animate-fade-in;
+  }
+  
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-[#00BFFF]; /* purple to deep sky blue */
+  }
+  
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#00BFFF];
+  }
+}
