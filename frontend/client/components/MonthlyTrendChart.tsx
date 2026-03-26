@@ -30,7 +30,7 @@ export function MonthlyTrendChart() {
           <Tooltip
             contentStyle={{
               backgroundColor: "#1F2C2D",
-              border: "1px solid #5E8F8E",
+              border: "1px solid #4C1D95",
               borderRadius: "8px",
             }}
           />
@@ -48,9 +48,9 @@ export function MonthlyTrendChart() {
           <Line
             type="monotone"
             dataKey="spending"
-            stroke="#A6C7C7"
+            stroke="#C4B5FD"
             strokeWidth={2}
-            dot={{ fill: "#A6C7C7", r: 4 }}
+            dot={{ fill: "#C4B5FD", r: 4 }}
             isAnimationActive
             animationDuration={1000}
             animationBegin={100}
@@ -59,9 +59,9 @@ export function MonthlyTrendChart() {
           <Line
             type="monotone"
             dataKey="savings"
-            stroke="#8FBFBD"
+            stroke="#7353f6"
             strokeWidth={2}
-            dot={{ fill: "#8FBFBD", r: 4 }}
+            dot={{ fill: "#7353f6", r: 4 }}
             isAnimationActive
             animationDuration={1100}
             animationBegin={200}

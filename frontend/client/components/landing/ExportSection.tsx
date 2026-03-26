@@ -17,16 +17,16 @@ export default function ExportSection() {
               transition={{ duration: 0.8 }}
             >
               <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm border border-slate-200">
-                 <DownloadCloud className="w-8 h-8 text-[#5E8F8E]" />
+                 <DownloadCloud className="w-8 h-8 text-[#4C1D95]" />
               </div>
               <h2 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-slate-900">
-                 Step 7: <span className="text-[#5E8F8E]">Export</span>
+                 Step 7: <span className="text-[#4C1D95]">Export</span>
               </h2>
               <p className="text-xl md:text-2xl text-slate-500 font-medium mb-10 max-w-lg">
                 Your perfectly structured, AI-categorized ledger. Ready to download as an Excel sheet instantly.
               </p>
               
-              <button className="px-8 py-4 bg-[#5E8F8E] hover:bg-[#4f7f7d] text-white font-bold rounded-full transition-transform hover:scale-105 shadow-[0_10px_30px_rgba(94,143,142,0.3)]">
+              <button className="px-8 py-4 bg-[#4C1D95] hover:bg-[#4f7f7d] text-white font-bold rounded-full transition-transform hover:scale-105 shadow-[0_10px_30px_rgba(94,143,142,0.3)]">
                  See Demo Export
               </button>
             </motion.div>
@@ -43,7 +43,7 @@ export default function ExportSection() {
             >
                {/* Excel Toolbar Mockup */}
                <div className="h-10 border-b border-[#D5E8E7] bg-[#EDF6F5] flex items-center px-4 gap-2">
-                 <FileSpreadsheet className="w-5 h-5 text-[#5E8F8E]" />
+                 <FileSpreadsheet className="w-5 h-5 text-[#4C1D95]" />
                  <span className="text-sm font-bold text-[#3F6E6D]">Ledger_Export.xlsx</span>
                </div>
                

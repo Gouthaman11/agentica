@@ -32,7 +32,7 @@ export function NetBalanceTrendChart() {
           <Tooltip
             contentStyle={{
               backgroundColor: "#1F2C2D",
-              border: "1px solid #5E8F8E",
+              border: "1px solid #4C1D95",
               borderRadius: "8px",
             }}
             cursor={{ fill: "rgba(143, 191, 189, 0.16)" }}
@@ -40,9 +40,9 @@ export function NetBalanceTrendChart() {
           <Line
             type="monotone"
             dataKey="balance"
-            stroke="#8FBFBD"
+            stroke="#7353f6"
             strokeWidth={3}
-            dot={{ fill: "#8FBFBD", r: 5 }}
+            dot={{ fill: "#7353f6", r: 5 }}
             activeDot={{ r: 7 }}
             isAnimationActive
             animationDuration={1100}

@@ -32,14 +32,14 @@ export function IncomeExpenseChart() {
           <Tooltip
             contentStyle={{
               backgroundColor: "#1F2C2D",
-              border: "1px solid #5E8F8E",
+              border: "1px solid #4C1D95",
               borderRadius: "8px",
             }}
             cursor={{ fill: "rgba(143, 191, 189, 0.16)" }}
           />
           <Legend />
-          <Bar dataKey="income" fill="#8FBFBD" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={900} animationEasing="ease-out" />
-          <Bar dataKey="expense" fill="#D8EC63" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={1100} animationBegin={120} animationEasing="ease-out" />
+          <Bar dataKey="income" fill="#7353f6" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={900} animationEasing="ease-out" />
+          <Bar dataKey="expense" fill="#B39DFF" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={1100} animationBegin={120} animationEasing="ease-out" />
         </BarChart>
       </ResponsiveContainer>
     </div>

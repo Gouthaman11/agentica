@@ -36,9 +36,9 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   const location = useLocation();
 
   return (
-    <div className="flex bg-[#F1F7F6] dark:bg-[#0A0A0B] min-h-screen font-sans selection:bg-[#D8EC63]/30 relative">
+    <div className="flex bg-background min-h-screen font-sans selection:bg-primary/30 relative">
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[10%] right-[10%] w-[40%] h-[40%] rounded-full bg-[#8FBFBD]/15 blur-[120px]" />
+        <div className="absolute top-[10%] right-[10%] w-[40%] h-[40%] rounded-full bg-primary/15 blur-[120px]" />
       </div>
 
       {/* Project Icon (Top Left) */}
@@ -68,8 +68,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 to={item.path}
                 className={`group relative flex items-center justify-center w-[42px] h-[42px] rounded-full transition-all duration-300 ${
                   isActive
-                    ? "bg-black text-white shadow-[0_8px_20px_-10px_rgba(0,0,0,0.7)] scale-[1.03]"
-                    : "bg-white/95 dark:bg-[#1A1E21]/95 text-slate-500 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:text-[#1b3332] dark:hover:text-[#D8EC63] hover:scale-[1.04]"
+                    ? "bg-primary text-white shadow-[0_8px_20px_-10px_rgba(115,83,246,0.7)] scale-[1.03]"
+                    : "bg-white/95 dark:bg-[#1A1E21]/95 text-slate-500 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:text-primary dark:hover:text-primary hover:scale-[1.04]"
                 }`}
               >
                 <Icon className={`w-[18px] h-[18px] ${isActive ? "stroke-[2.4px]" : "stroke-[2.1px]"}`} />
@@ -109,7 +109,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               to={item.path}
               className={`p-2 rounded-2xl flex flex-col items-center gap-1 transition-all ${
                 isActive
-                  ? "text-black dark:text-[#D8EC63] bg-black/5 dark:bg-[#D8EC63]/5"
+                  ? "text-primary bg-primary/10"
                   : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
               }`}
             >

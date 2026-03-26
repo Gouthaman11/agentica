@@ -9,7 +9,7 @@ import {
   Calendar, FileText, BarChart3, Repeat, Activity, Layers, Sigma
 } from 'lucide-react';
 
-const COLORS = ['#8FBFBD', '#78AFAE', '#D8EC63', '#A6C7C7', '#6E9F9D'];
+const COLORS = ['#7353f6', '#78AFAE', '#B39DFF', '#C4B5FD', '#573ec4'];
 
 // MOCK DATA
 const cashFlowData = [
@@ -69,8 +69,8 @@ export default function Analytics() {
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mt-1">{currencySymbol}292,000</h2>
             </div>
             <div className="px-6">
-              <p className="text-sm font-bold text-[#6E9F9D] uppercase tracking-wider flex items-center gap-2 mb-2"><Wallet className="w-4 h-4" /> Net Balance</p>
-              <h2 className="text-3xl font-bold text-[#5E8F8E] dark:text-[#A6C7C7] mt-1">{currencySymbol}87,000</h2>
+              <p className="text-sm font-bold text-[#573ec4] uppercase tracking-wider flex items-center gap-2 mb-2"><Wallet className="w-4 h-4" /> Net Balance</p>
+              <h2 className="text-3xl font-bold text-[#4C1D95] dark:text-[#C4B5FD] mt-1">{currencySymbol}87,000</h2>
             </div>
           </div>
         </motion.div>
@@ -81,16 +81,16 @@ export default function Analytics() {
           <div className="flex items-end justify-between mb-2">
             <div>
               <span className="text-2xl font-bold text-slate-900 dark:text-white">70%</span>
-              <p className="text-xs text-[#6E9F9D]">Spent</p>
+              <p className="text-xs text-[#573ec4]">Spent</p>
             </div>
             <div className="text-right">
-              <span className="text-2xl font-bold text-[#5E8F8E] dark:text-[#D8EC63]">30%</span>
+              <span className="text-2xl font-bold text-[#4C1D95] dark:text-[#B39DFF]">30%</span>
               <p className="text-xs text-[#7F9E35]">Saved</p>
             </div>
           </div>
           <div className="w-full h-3 bg-slate-200/80 dark:bg-white/10 rounded-full overflow-hidden flex">
-            <div className="h-full bg-[#8FBFBD] rounded-full" style={{ width: '70%' }}></div>
-            <div className="h-full bg-[#D8EC63]" style={{ width: '30%' }}></div>
+            <div className="h-full bg-[#7353f6] rounded-full" style={{ width: '70%' }}></div>
+            <div className="h-full bg-[#B39DFF]" style={{ width: '30%' }}></div>
           </div>
         </motion.div>
       </div>
@@ -103,13 +103,13 @@ export default function Analytics() {
           transition={{ delay: 0.2 }}
           className="lg:col-span-2 p-6 rounded-3xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/50 dark:border-white/5 shadow-sm"
         >
-          <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-white flex items-center gap-2"><Layers className="w-5 h-5 text-[#6E9F9D]" /> Cash Flow Trend</h2>
+          <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-white flex items-center gap-2"><Layers className="w-5 h-5 text-[#573ec4]" /> Cash Flow Trend</h2>
           <div className="h-[300px] w-full mb-6">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={cashFlowData} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorInc" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#78AFAE" stopOpacity={0.3}/><stop offset="95%" stopColor="#78AFAE" stopOpacity={0}/></linearGradient>
-                  <linearGradient id="colorExp" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#A6C7C7" stopOpacity={0.3}/><stop offset="95%" stopColor="#A6C7C7" stopOpacity={0}/></linearGradient>
+                  <linearGradient id="colorExp" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#C4B5FD" stopOpacity={0.3}/><stop offset="95%" stopColor="#C4B5FD" stopOpacity={0}/></linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="currentColor" className="opacity-10 dark:opacity-5" />
                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} dy={10} />
@@ -117,15 +117,15 @@ export default function Analytics() {
                 <RechartsTooltip contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.9)', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }} />
                 <Legend iconType="circle" wrapperStyle={{ fontSize: '12px', paddingTop: '20px' }} />
                 <Area type="monotone" name="Income" dataKey="income" stroke="#78AFAE" strokeWidth={3} fillOpacity={1} fill="url(#colorInc)" isAnimationActive animationDuration={1000} animationEasing="ease-out" />
-                <Area type="monotone" name="Expense" dataKey="expense" stroke="#A6C7C7" strokeWidth={3} fillOpacity={1} fill="url(#colorExp)" isAnimationActive animationDuration={1100} animationBegin={120} animationEasing="ease-out" />
-                <Line type="monotone" name="Net Cash Flow" dataKey="net" stroke="#6E9F9D" strokeWidth={3} dot={{ r: 4, fill: '#6E9F9D' }} activeDot={{ r: 6 }} isAnimationActive animationDuration={1200} animationBegin={220} animationEasing="ease-out" />
+                <Area type="monotone" name="Expense" dataKey="expense" stroke="#C4B5FD" strokeWidth={3} fillOpacity={1} fill="url(#colorExp)" isAnimationActive animationDuration={1100} animationBegin={120} animationEasing="ease-out" />
+                <Line type="monotone" name="Net Cash Flow" dataKey="net" stroke="#573ec4" strokeWidth={3} dot={{ r: 4, fill: '#573ec4' }} activeDot={{ r: 6 }} isAnimationActive animationDuration={1200} animationBegin={220} animationEasing="ease-out" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
           <div className="grid grid-cols-3 gap-4 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
               <div><p className="text-xs font-bold text-slate-500 uppercase">Avg Income</p><p className="text-lg font-bold text-slate-900 dark:text-white mt-1">{currencySymbol}48,666</p></div>
               <div><p className="text-xs font-bold text-slate-500 uppercase">Avg Expense</p><p className="text-lg font-bold text-slate-900 dark:text-white mt-1">{currencySymbol}34,166</p></div>
-              <div><p className="text-xs font-bold text-slate-500 uppercase">Avg Net Flow</p><p className="text-lg font-bold text-[#6E9F9D] mt-1">{currencySymbol}14,500</p></div>
+              <div><p className="text-xs font-bold text-slate-500 uppercase">Avg Net Flow</p><p className="text-lg font-bold text-[#573ec4] mt-1">{currencySymbol}14,500</p></div>
           </div>
         </motion.div>
 
@@ -136,7 +136,7 @@ export default function Analytics() {
            transition={{ delay: 0.3 }}
            className="p-6 rounded-3xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/50 dark:border-white/5 shadow-sm flex flex-col"
         >
-          <h2 className="text-lg font-bold mb-4 text-slate-900 dark:text-white flex items-center gap-2"><PieChart className="w-5 h-5 text-[#6E9F9D]" /> Category Distribution</h2>
+          <h2 className="text-lg font-bold mb-4 text-slate-900 dark:text-white flex items-center gap-2"><PieChart className="w-5 h-5 text-[#573ec4]" /> Category Distribution</h2>
           <div className="h-[200px] w-full flex justify-center items-center">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -170,7 +170,7 @@ export default function Analytics() {
               </tbody>
             </table>
           </div>
-          <div className="mt-4 p-3 rounded-lg bg-[#EDF6F5] dark:bg-[#1E2B2B] border border-[#D5E8E7] dark:border-[#6E9F9D]/30">
+          <div className="mt-4 p-3 rounded-lg bg-[#EDF6F5] dark:bg-[#1E2B2B] border border-[#D5E8E7] dark:border-[#573ec4]/30">
             <p className="text-xs text-[#3F6E6D] dark:text-[#BFDADA]"><span className="font-bold">Top Spending:</span> Rent & Utilities clearly dominates overall expenditure volume.</p>
           </div>
         </motion.div>
@@ -185,7 +185,7 @@ export default function Analytics() {
            className="p-6 rounded-3xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/50 dark:border-white/5 shadow-sm space-y-8"
         >
           <div>
-            <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-white flex items-center gap-2"><Calendar className="w-5 h-5 text-[#8FBFBD]" /> Time-Based Spending Trend</h2>
+            <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-white flex items-center gap-2"><Calendar className="w-5 h-5 text-[#7353f6]" /> Time-Based Spending Trend</h2>
             <div className="h-[200px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={dailyTrendData} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
@@ -193,7 +193,7 @@ export default function Analytics() {
                   <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} dy={10} />
                   <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} tickFormatter={(val) => `${currencySymbol}${val/1000}k`} />
                   <RechartsTooltip cursor={{fill: 'rgba(143, 191, 189, 0.14)'}} contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.9)', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }} formatter={(val: number) => `${currencySymbol}${val.toLocaleString()}`} />
-                  <Bar dataKey="spend" fill="#8FBFBD" radius={[4, 4, 0, 0]} maxBarSize={40} isAnimationActive animationDuration={1000} animationEasing="ease-out" />
+                  <Bar dataKey="spend" fill="#7353f6" radius={[4, 4, 0, 0]} maxBarSize={40} isAnimationActive animationDuration={1000} animationEasing="ease-out" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -261,13 +261,13 @@ export default function Analytics() {
           </div>
 
           <div className="pt-8 border-t border-slate-200 dark:border-white/5 flex-1">
-            <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-white flex items-center gap-2"><ArrowRightLeft className="w-5 h-5 text-[#8FBFBD]" /> Transaction Flow Architecture</h2>
+            <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-white flex items-center gap-2"><ArrowRightLeft className="w-5 h-5 text-[#7353f6]" /> Transaction Flow Architecture</h2>
             <div className="flex flex-col gap-4">
                {/* Custom Flow Diagram Simulation */}
                {[
                  { source: 'Bank Checking', dist: 'Food & Dining', mer: 'Swiggy / Zomato', amt: '12k', flowColor: 'border-rose-500/30 dark:border-rose-500/50', amtColor: 'text-rose-500' },
                  { source: 'Bank Checking', dist: 'Rent', mer: 'WeWork Provider', amt: '15k', flowColor: 'border-emerald-500/30 dark:border-emerald-500/50', amtColor: 'text-emerald-500' },
-                 { source: 'Bank Credit', dist: 'Software', mer: 'AWS / Netflix', amt: '5k', flowColor: 'border-[#8FBFBD]/40 dark:border-[#8FBFBD]/55', amtColor: 'text-[#6E9F9D]' }
+                 { source: 'Bank Credit', dist: 'Software', mer: 'AWS / Netflix', amt: '5k', flowColor: 'border-[#7353f6]/40 dark:border-[#7353f6]/55', amtColor: 'text-[#573ec4]' }
                ].map((flow, i) => (
                  <div key={i} className="flex items-center text-xs w-full">
                     <div className="w-24 px-3 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 font-medium text-center shadow-sm">{flow.source}</div>
@@ -293,7 +293,7 @@ export default function Analytics() {
            transition={{ delay: 0.6 }}
            className="p-6 rounded-3xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/50 dark:border-white/5 shadow-sm"
         >
-          <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-white flex items-center gap-2"><Layers className="w-5 h-5 text-[#6E9F9D]" /> Multi-Upload Trajectory</h2>
+          <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-white flex items-center gap-2"><Layers className="w-5 h-5 text-[#573ec4]" /> Multi-Upload Trajectory</h2>
           <div className="h-[200px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={uploadComparisonData} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
@@ -302,7 +302,7 @@ export default function Analytics() {
                 <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b' }} tickFormatter={(val) => `${currencySymbol}${val/1000}k`} />
                 <RechartsTooltip contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.9)', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }} formatter={(val: number) => `${currencySymbol}${val.toLocaleString()}`} />
                 <Line type="step" name="Cyclical Income" dataKey="income" stroke="#78AFAE" strokeWidth={3} dot={{ r: 4, fill: '#78AFAE' }} isAnimationActive animationDuration={1000} animationEasing="ease-out" />
-                <Line type="step" name="Cyclical Expense" dataKey="expense" stroke="#A6C7C7" strokeWidth={3} dot={{ r: 4, fill: '#A6C7C7' }} isAnimationActive animationDuration={1100} animationBegin={120} animationEasing="ease-out" />
+                <Line type="step" name="Cyclical Expense" dataKey="expense" stroke="#C4B5FD" strokeWidth={3} dot={{ r: 4, fill: '#C4B5FD' }} isAnimationActive animationDuration={1100} animationBegin={120} animationEasing="ease-out" />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -315,19 +315,19 @@ export default function Analytics() {
            transition={{ delay: 0.7 }}
            className="p-6 rounded-3xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/50 dark:border-white/5 shadow-sm relative overflow-hidden flex flex-col justify-center"
         >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#8FBFBD]/10 blur-[50px] pointer-events-none" />
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-6"><Sigma className="w-6 h-6 text-[#6E9F9D]" /> Analytical Observations</h2>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#7353f6]/10 blur-[50px] pointer-events-none" />
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-6"><Sigma className="w-6 h-6 text-[#573ec4]" /> Analytical Observations</h2>
           <ul className="space-y-4">
             <li className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 transition-colors">
-               <div className="mt-1 w-2 h-2 rounded-full bg-[#8FBFBD] shrink-0 shadow-[0_0_8px_rgba(143,191,189,0.7)]"></div>
+               <div className="mt-1 w-2 h-2 rounded-full bg-[#7353f6] shrink-0 shadow-[0_0_8px_rgba(143,191,189,0.7)]"></div>
                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">Expenses show extreme variability across reporting months, predominantly peaking in March driven by irregular debits.</p>
             </li>
             <li className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 transition-colors">
-               <div className="mt-1 w-2 h-2 rounded-full bg-[#D8EC63] shrink-0 shadow-[0_0_8px_rgba(216,236,99,0.8)]"></div>
+               <div className="mt-1 w-2 h-2 rounded-full bg-[#B39DFF] shrink-0 shadow-[0_0_8px_rgba(216,236,99,0.8)]"></div>
                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">Rent & Utilities (35%) form a strictly consistent cost baseline, whereas Food & Dining (25%) exhibits fluctuating frequency behavior.</p>
             </li>
             <li className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 transition-colors">
-               <div className="mt-1 w-2 h-2 rounded-full bg-[#6E9F9D] shrink-0 shadow-[0_0_8px_rgba(110,159,157,0.7)]"></div>
+               <div className="mt-1 w-2 h-2 rounded-full bg-[#573ec4] shrink-0 shadow-[0_0_8px_rgba(110,159,157,0.7)]"></div>
                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">Upload variance analysis strictly maps a 10.6% aggregate increase in discretionary spending volume compared to initial baseline arrays.</p>
             </li>
           </ul>

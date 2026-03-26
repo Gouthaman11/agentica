@@ -32,13 +32,13 @@ export function CategoryComparisonChart() {
           <Tooltip
             contentStyle={{
               backgroundColor: "#1F2C2D",
-              border: "1px solid #5E8F8E",
+              border: "1px solid #4C1D95",
               borderRadius: "8px",
             }}
           />
           <Legend />
-          <Bar dataKey="march" fill="#8FBFBD" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={900} animationEasing="ease-out" />
-          <Bar dataKey="april" fill="#A6C7C7" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={1000} animationBegin={100} animationEasing="ease-out" />
+          <Bar dataKey="march" fill="#7353f6" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={900} animationEasing="ease-out" />
+          <Bar dataKey="april" fill="#C4B5FD" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={1000} animationBegin={100} animationEasing="ease-out" />
           <Bar dataKey="may" fill="#78AFAE" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={1100} animationBegin={200} animationEasing="ease-out" />
         </BarChart>
       </ResponsiveContainer>

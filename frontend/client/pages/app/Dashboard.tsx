@@ -75,7 +75,7 @@ const cashFlowSavings = [
 ];
 
 const upcomingBills = [
-  { name: 'Twitch', date: '4 Jan, 2025', amount: '₹9.99', icon: Gamepad2, color: 'text-[#5E8F8E]', bg: 'bg-[#E4F1F0]' },
+  { name: 'Twitch', date: '4 Jan, 2025', amount: '₹9.99', icon: Gamepad2, color: 'text-[#4C1D95]', bg: 'bg-[#E4F1F0]' },
   { name: 'Dribbble Pro', date: '5 Jan, 2025', amount: '₹15.00', icon: Dribbble, color: 'text-rose-600', bg: 'bg-rose-100' },
   { name: 'Spotify Premium', date: '5 Jan, 2025', amount: '₹10.99', icon: Music, color: 'text-emerald-600', bg: 'bg-emerald-100' },
   { name: 'Airbnb', date: '7 Jan, 2025', amount: '₹220.00', icon: Home, color: 'text-rose-500', bg: 'bg-rose-100' },
@@ -127,8 +127,8 @@ const GaugeChart = ({ total }: { total: number }) => {
         <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#ffffff" strokeWidth="26" strokeDasharray="2 4" className="dark:stroke-black opacity-30 pointer-events-none" />
         <defs>
           <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#A6C7C7" />
-            <stop offset="100%" stopColor="#6E9F9D" />
+            <stop offset="0%" stopColor="#C4B5FD" />
+            <stop offset="100%" stopColor="#573ec4" />
           </linearGradient>
         </defs>
       </svg>
@@ -164,7 +164,7 @@ export default function Dashboard() {
 
 
   return (
-    <div className="w-full flex flex-col gap-6 selection:bg-[#D8EC63]/30 pb-20">
+    <div className="w-full flex flex-col gap-6 selection:bg-[#B39DFF]/30 pb-20">
         
       {/* HEADER & TITLE SECTION COMBINED */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 mt-1">
@@ -449,7 +449,7 @@ export default function Dashboard() {
                    </div>
                    <div className="text-right flex flex-col items-end">
                      <span className={`font-extrabold text-[13px] ${tx.amount.includes('+') ? 'text-emerald-500' : 'text-slate-900 dark:text-white'}`}>{tx.amount.replace('₹', currencySymbol).replace('$', currencySymbol)}</span>
-                     <span className={`text-[9px] font-bold mt-1 px-2 py-0.5 rounded-full ${tx.status === 'Completed' ? 'bg-[#EDF6F5] dark:bg-[#6E9F9D]/20 text-[#5E8F8E]' : 'bg-amber-50 dark:bg-amber-500/10 text-amber-500'}`}>{tx.status}</span>
+                     <span className={`text-[9px] font-bold mt-1 px-2 py-0.5 rounded-full ${tx.status === 'Completed' ? 'bg-[#EDF6F5] dark:bg-[#573ec4]/20 text-[#4C1D95]' : 'bg-amber-50 dark:bg-amber-500/10 text-amber-500'}`}>{tx.status}</span>
                    </div>
                  </div>
                ))}

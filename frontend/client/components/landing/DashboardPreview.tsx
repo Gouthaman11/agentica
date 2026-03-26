@@ -31,9 +31,9 @@ const cashFlowData = [
 ];
 
 const upcomingBills = [
-  { name: 'Twitch', amount: '₹9.99', icon: Gamepad2, color: 'text-[#5E8F8E]', bg: 'bg-[#EAF4F3]' },
+  { name: 'Twitch', amount: '₹9.99', icon: Gamepad2, color: 'text-[#4C1D95]', bg: 'bg-[#EAF4F3]' },
   { name: 'Dribbble Pro', amount: '₹15.00', icon: Dribbble, color: 'text-rose-600', bg: 'bg-rose-50' },
-  { name: 'Spotify', amount: '₹10.99', icon: Music, color: 'text-[#5E8F8E]', bg: 'bg-[#EAF4F3]' },
+  { name: 'Spotify', amount: '₹10.99', icon: Music, color: 'text-[#4C1D95]', bg: 'bg-[#EAF4F3]' },
   { name: 'Airbnb', amount: '₹220.00', icon: Home, color: 'text-rose-500', bg: 'bg-rose-50' },
 ];
 
@@ -43,7 +43,7 @@ const MiniGauge = () => (
         <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#f1f5f9" strokeWidth="20" strokeLinecap="round" />
         <motion.path 
           initial={{ pathLength: 0 }} animate={{ pathLength: 0.7 }} transition={{ duration: 1.5 }}
-          d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#6E9F9D" strokeWidth="20" strokeLinecap="round" strokeDasharray="251.2"
+          d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#573ec4" strokeWidth="20" strokeLinecap="round" strokeDasharray="251.2"
         />
       </svg>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-2">
@@ -54,14 +54,14 @@ const MiniGauge = () => (
 
 export default function DashboardPreview() {
   return (
-    <div className="w-full h-full bg-[#f8fafc] dark:bg-[#0A0A0B] flex overflow-hidden font-sans border border-slate-200 dark:border-white/5 rounded-2xl shadow-2xl">
+    <div className="w-full h-full bg-[#f8fafc] dark:bg-[#0F1115] flex overflow-hidden font-sans border border-slate-200 dark:border-white/5 rounded-2xl shadow-2xl">
       
       {/* 1. Sidebar Mimic */}
       <div className="w-[45px] h-full bg-white dark:bg-[#121213] border-r border-slate-100 dark:border-white/5 flex flex-col items-center py-4 gap-4 z-10 shrink-0">
          <div className="w-6 h-6 bg-slate-900 rounded-lg flex items-center justify-center mb-4">
             <span className="text-[10px] text-white">L</span>
          </div>
-         <div className="w-7 h-7 bg-[#EDF6F5] rounded-full flex items-center justify-center text-[#5E8F8E]">
+         <div className="w-7 h-7 bg-[#EDF6F5] rounded-full flex items-center justify-center text-[#4C1D95]">
             <Activity className="w-3.5 h-3.5" />
          </div>
          <div className="w-7 h-7 hover:bg-slate-50 rounded-full flex items-center justify-center text-slate-400">
@@ -110,7 +110,7 @@ export default function DashboardPreview() {
                     <ResponsiveContainer width="100%" height="100%">
                        <LineChart data={balanceData}>
                           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="currentColor" opacity={0.1} />
-                          <Line type="monotone" dataKey="value" stroke="#6E9F9D" strokeWidth={2.5} dot={false} isAnimationActive animationDuration={1000} animationEasing="ease-out" />
+                          <Line type="monotone" dataKey="value" stroke="#573ec4" strokeWidth={2.5} dot={false} isAnimationActive animationDuration={1000} animationEasing="ease-out" />
                        </LineChart>
                     </ResponsiveContainer>
                  </div>
@@ -121,7 +121,7 @@ export default function DashboardPreview() {
                  <div className="flex justify-between mb-1">
                     <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Cash Flow</span>
                     <div className="flex gap-1">
-                       <div className="w-6 h-3 bg-[#EDF6F5] dark:bg-[#6E9F9D]/15 rounded-full" />
+                       <div className="w-6 h-3 bg-[#EDF6F5] dark:bg-[#573ec4]/15 rounded-full" />
                        <div className="w-6 h-3 bg-slate-50 dark:bg-white/5 rounded-full" />
                     </div>
                  </div>
@@ -131,7 +131,7 @@ export default function DashboardPreview() {
                     <ResponsiveContainer width="100%" height="100%">
                        <BarChart data={cashFlowData}>
                           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="currentColor" opacity={0.1} />
-                          <Bar dataKey="value" fill="#8FBFBD" radius={[3, 3, 3, 3]} isAnimationActive animationDuration={1000} animationEasing="ease-out" />
+                          <Bar dataKey="value" fill="#7353f6" radius={[3, 3, 3, 3]} isAnimationActive animationDuration={1000} animationEasing="ease-out" />
                        </BarChart>
                     </ResponsiveContainer>
                  </div>
@@ -172,7 +172,7 @@ export default function DashboardPreview() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-10 right-10 bg-[#5E8F8E] text-white p-3 rounded-2xl shadow-2xl flex items-center gap-2 z-20"
+          className="absolute bottom-10 right-10 bg-[#4C1D95] text-white p-3 rounded-2xl shadow-2xl flex items-center gap-2 z-20"
         >
            <Sparkles className="w-3.5 h-3.5" />
            <span className="text-[10px] font-bold whitespace-nowrap">AI Placement Active</span>

@@ -31,7 +31,7 @@ export default function ExtractionSection() {
              Step 2
            </div>
            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-6 leading-[1.1]">
-              Instant <span className="text-[#5E8F8E]">Extraction</span>
+              Instant <span className="text-[#4C1D95]">Extraction</span>
            </h2>
            <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed max-w-lg">
               Watch as unstructured chaos perfectly aligns into structured financial rows, error-free.
@@ -83,7 +83,7 @@ export default function ExtractionSection() {
                     <div className="text-slate-500 font-medium text-[10px] md:text-sm">{row.date}</div>
                     <div className="text-slate-900 font-bold text-[10px] md:text-sm truncate pr-2">{row.desc}</div>
                     <div className="text-red-500 font-medium text-[10px] md:text-sm">{row.debit}</div>
-                    <div className="text-[#5E8F8E] font-medium text-[10px] md:text-sm">{row.credit}</div>
+                    <div className="text-[#4C1D95] font-medium text-[10px] md:text-sm">{row.credit}</div>
                     <div className="text-slate-900 font-bold text-[10px] md:text-sm">{row.balance}</div>
                   </motion.div>
                 ))}

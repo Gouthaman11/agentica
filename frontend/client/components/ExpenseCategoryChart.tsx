@@ -1,11 +1,11 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
 const categoryData = [
-  { name: "Food", value: 8500, fill: "#8FBFBD" },
+  { name: "Food", value: 8500, fill: "#7353f6" },
   { name: "Transportation", value: 5200, fill: "#78AFAE" },
-  { name: "Entertainment", value: 3800, fill: "#A6C7C7" },
-  { name: "Utilities", value: 4100, fill: "#6E9F9D" },
-  { name: "Other", value: 6850, fill: "#D8EC63" },
+  { name: "Entertainment", value: 3800, fill: "#C4B5FD" },
+  { name: "Utilities", value: 4100, fill: "#573ec4" },
+  { name: "Other", value: 6850, fill: "#B39DFF" },
 ];
 
 export function ExpenseCategoryChart() {

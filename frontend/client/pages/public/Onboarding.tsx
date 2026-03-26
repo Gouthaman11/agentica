@@ -20,7 +20,7 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0A0A0B] flex flex-col justify-center items-center p-6 selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0F1115] flex flex-col justify-center items-center p-6 selection:bg-indigo-500/30">
       
       {/* Background glow mapping across the workflow */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">

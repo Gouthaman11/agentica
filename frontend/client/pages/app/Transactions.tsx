@@ -203,7 +203,7 @@ export default function Transactions() {
             >
               <div className="p-6 border-b border-slate-200 dark:border-white/10 flex justify-between items-center sticky top-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-10">
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <CreditCard className="w-5 h-5 text-[#6E9F9D]" /> Transaction Details
+                  <CreditCard className="w-5 h-5 text-[#573ec4]" /> Transaction Details
                 </h2>
                 <button onClick={() => setSelectedTx(null)} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 transition">
                   <X className="w-5 h-5 text-slate-500" />
@@ -239,7 +239,7 @@ export default function Transactions() {
                   </div>
                   <div>
                     <p className="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Category (CoA)</p>
-                    <p className="text-sm font-medium text-[#5E8F8E] dark:text-[#A6C7C7] bg-[#EDF6F5] dark:bg-[#6E9F9D]/15 inline-flex px-2 py-1 rounded-md">{selectedTx.category}</p>
+                    <p className="text-sm font-medium text-[#4C1D95] dark:text-[#C4B5FD] bg-[#EDF6F5] dark:bg-[#573ec4]/15 inline-flex px-2 py-1 rounded-md">{selectedTx.category}</p>
                   </div>
                   <div>
                     <p className="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Balance After</p>
@@ -248,9 +248,9 @@ export default function Transactions() {
                 </div>
 
                 {/* AI & Source Info */}
-                <div className="p-5 rounded-2xl border border-[#D5E8E7] dark:border-[#6E9F9D]/30 bg-[#EDF6F5] dark:bg-[#6E9F9D]/10 space-y-4">
+                <div className="p-5 rounded-2xl border border-[#D5E8E7] dark:border-[#573ec4]/30 bg-[#EDF6F5] dark:bg-[#573ec4]/10 space-y-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <BrainCircuit className="w-5 h-5 text-[#6E9F9D]" />
+                    <BrainCircuit className="w-5 h-5 text-[#573ec4]" />
                     <h4 className="font-bold text-slate-900 dark:text-white">AI Extraction Data</h4>
                   </div>
                   <div className="flex justify-between items-center text-sm">
@@ -261,7 +261,7 @@ export default function Transactions() {
                     <span className="text-slate-500 flex items-center gap-2"><Calendar className="w-4 h-4" /> Upload Date</span>
                     <span className="font-medium text-slate-900 dark:text-slate-200">{selectedTx.uploadDate}</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm pt-2 border-t border-[#D5E8E7] dark:border-[#6E9F9D]/30">
+                  <div className="flex justify-between items-center text-sm pt-2 border-t border-[#D5E8E7] dark:border-[#573ec4]/30">
                     <span className="text-slate-500">Extraction Confidence</span>
                     <span className="flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400">
                       <CheckCircle2 className="w-4 h-4" /> {selectedTx.aiConfidence}%
@@ -296,10 +296,10 @@ export default function Transactions() {
                 localStorage.setItem('theme', 'dark');
               }
             }}
-            className="w-10 h-10 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl flex items-center justify-center text-slate-400 hover:text-[#5E8F8E] transition-all shadow-sm"
+            className="w-10 h-10 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl flex items-center justify-center text-slate-400 hover:text-[#4C1D95] transition-all shadow-sm"
           >
             <Sun className="w-4 h-4 dark:hidden" />
-            <Moon className="w-4 h-4 hidden dark:block text-[#8FBFBD]" />
+            <Moon className="w-4 h-4 hidden dark:block text-[#7353f6]" />
           </button>
           
           <div className="relative group flex items-center">
@@ -310,21 +310,21 @@ export default function Transactions() {
                 className="bg-white/90 dark:bg-[#17191E]/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-slate-200 dark:border-white/10 shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 translate-x-4 whitespace-nowrap"
               >
                 <p className="text-[13px] font-black text-slate-900 dark:text-white leading-none tracking-tight">{userName}</p>
-                <p className="text-[9px] text-[#6E9F9D] font-black mt-0.5 uppercase tracking-widest leading-none">Settings</p>
+                <p className="text-[9px] text-[#573ec4] font-black mt-0.5 uppercase tracking-widest leading-none">Settings</p>
               </motion.div>
             </div>
-            <Link to="/enhanced/settings" className="w-12 h-12 rounded-full overflow-hidden bg-white/80 dark:bg-[#17191E]/80 backdrop-blur-md border border-slate-200 dark:border-white/10 flex items-center justify-center group-hover:shadow-[0_8px_30px_rgba(110,159,157,0.25)] transition-all duration-700 relative z-10 hover:border-[#6E9F9D]/50 shrink-0">
+            <Link to="/enhanced/settings" className="w-12 h-12 rounded-full overflow-hidden bg-white/80 dark:bg-[#17191E]/80 backdrop-blur-md border border-slate-200 dark:border-white/10 flex items-center justify-center group-hover:shadow-[0_8px_30px_rgba(110,159,157,0.25)] transition-all duration-700 relative z-10 hover:border-[#573ec4]/50 shrink-0">
               <div className="w-10 h-10 rounded-full overflow-hidden shadow-inner grow-0 shrink-0 relative z-10 border border-slate-100 dark:border-white/5 group-hover:rotate-[360deg] transition-transform duration-700">
                 <img src={`https://api.dicebear.com/7.x/notionists/svg?seed=${userName}&backgroundColor=f1f5f9`} alt="User Avatar" className="w-full h-full object-cover bg-slate-100" />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#8FBFBD]/0 to-[#8FBFBD]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#7353f6]/0 to-[#7353f6]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </Link>
           </div>
 
           <button className="flex bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-xl text-sm font-bold items-center gap-2 shadow-sm transition-all hover:bg-slate-50 dark:hover:bg-slate-700">
             Export View
           </button>
-          <button className="flex bg-[#5E8F8E] hover:bg-[#4D7E7D] text-white px-4 py-2.5 rounded-xl text-sm font-bold items-center gap-2 shadow-lg shadow-[#6E9F9D]/25 transition-all active:scale-95">
+          <button className="flex bg-[#4C1D95] hover:bg-[#4D7E7D] text-white px-4 py-2.5 rounded-xl text-sm font-bold items-center gap-2 shadow-lg shadow-[#573ec4]/25 transition-all active:scale-95">
             <Download className="w-4 h-4" /> Export All
           </button>
         </div>
@@ -348,7 +348,7 @@ export default function Transactions() {
             </div>
             <div className="border-l border-slate-200 dark:border-white/10 pl-6">
               <p className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2 mb-1">
-                <Activity className="w-4 h-4 text-[#6E9F9D]" /> Net Flow
+                <Activity className="w-4 h-4 text-[#573ec4]" /> Net Flow
               </p>
               <h2 className={`text-2xl font-bold ${summary.net >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
                 {summary.net >= 0 ? '+' : ''}{currencySymbol}{summary.net.toLocaleString()}
@@ -357,7 +357,7 @@ export default function Transactions() {
         </div>
         
         {/* Mini Analytics */}
-        <div className="lg:col-span-1 p-5 rounded-3xl bg-gradient-to-br from-[#8FBFBD]/10 to-[#D5E8E7]/50 backdrop-blur-xl border border-[#8FBFBD]/35 shadow-sm flex flex-col justify-between">
+        <div className="lg:col-span-1 p-5 rounded-3xl bg-gradient-to-br from-[#7353f6]/10 to-[#D5E8E7]/50 backdrop-blur-xl border border-[#7353f6]/35 shadow-sm flex flex-col justify-between">
            <div className="flex justify-between items-center mb-2">
              <p className="text-xs font-bold text-[#3F6E6D] dark:text-[#BFDADA] uppercase">Daily Spend Trend</p>
              <p className="text-xs font-bold text-slate-500">Mar 15-23</p>
@@ -367,7 +367,7 @@ export default function Transactions() {
               <BarChart data={miniChartData}>
                 <Bar dataKey="spend" radius={[2, 2, 0, 0]} isAnimationActive animationDuration={1000} animationEasing="ease-out">
                   {miniChartData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.spend > 10000 ? '#D8EC63' : '#8FBFBD'} />
+                    <Cell key={`cell-${index}`} fill={entry.spend > 10000 ? '#B39DFF' : '#7353f6'} />
                   ))}
                 </Bar>
               </BarChart>
@@ -386,7 +386,7 @@ export default function Transactions() {
               onClick={() => setDateFilter(filter)}
               className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors shadow-sm ${
                 dateFilter === filter 
-                  ? 'bg-[#5E8F8E] text-white shadow-[#6E9F9D]/30' 
+                  ? 'bg-[#4C1D95] text-white shadow-[#573ec4]/30' 
                   : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
               }`}
             >
@@ -397,14 +397,14 @@ export default function Transactions() {
 
         {/* Dynamic Native Custom Range Inputs Display */}
         {dateFilter === 'Custom Range' && (
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex gap-4 items-center bg-[#EDF6F5] dark:bg-[#6E9F9D]/15 p-3 rounded-2xl border border-[#D5E8E7] dark:border-[#6E9F9D]/30 shadow-sm w-fit">
+          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex gap-4 items-center bg-[#EDF6F5] dark:bg-[#573ec4]/15 p-3 rounded-2xl border border-[#D5E8E7] dark:border-[#573ec4]/30 shadow-sm w-fit">
             <div className="flex items-center gap-3">
               <span className="text-sm font-bold text-slate-600 dark:text-slate-300">From Date:</span>
               <input 
                  type="date" 
                  value={customStartDate} 
                  onChange={e => setCustomStartDate(e.target.value)} 
-                 className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-sm font-bold text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-[#6E9F9D] shadow-sm custom-calendar-icon" 
+                 className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-sm font-bold text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-[#573ec4] shadow-sm custom-calendar-icon" 
               />
             </div>
             <div className="flex items-center gap-3">
@@ -413,7 +413,7 @@ export default function Transactions() {
                  type="date" 
                  value={customEndDate} 
                  onChange={e => setCustomEndDate(e.target.value)} 
-                 className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-sm font-bold text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-[#6E9F9D] shadow-sm custom-calendar-icon" 
+                 className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-sm font-bold text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-[#573ec4] shadow-sm custom-calendar-icon" 
               />
             </div>
           </motion.div>
@@ -435,13 +435,13 @@ export default function Transactions() {
               placeholder="Search by merchant, category, or amount..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm font-medium text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#6E9F9D]/50 transition-shadow shadow-sm"
+              className="w-full bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm font-medium text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#573ec4]/50 transition-shadow shadow-sm"
             />
           </div>
           
           <div className="relative">
             <button onClick={() => { setShowCategoryDropdown(!showCategoryDropdown); setShowTypeDropdown(false); }} className="flex items-center gap-2 px-4 py-2.5 text-sm font-bold text-slate-700 dark:text-slate-300 bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors shadow-sm">
-              Category: <span className="text-[#5E8F8E] dark:text-[#A6C7C7]">{activeCategory}</span> <ChevronDown className="w-4 h-4 text-slate-400" />
+              Category: <span className="text-[#4C1D95] dark:text-[#C4B5FD]">{activeCategory}</span> <ChevronDown className="w-4 h-4 text-slate-400" />
             </button>
             {showCategoryDropdown && (
               <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 p-2 z-50">
@@ -449,7 +449,7 @@ export default function Transactions() {
                   <button 
                     key={c} 
                     onClick={() => { setActiveCategory(c); setShowCategoryDropdown(false); }} 
-                    className={`w-full text-left px-3 py-2 rounded-lg text-sm font-bold hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors ${activeCategory === c ? 'text-[#5E8F8E] dark:text-[#A6C7C7] bg-[#EDF6F5] dark:bg-[#6E9F9D]/15' : 'text-slate-600 dark:text-slate-300'}`}
+                    className={`w-full text-left px-3 py-2 rounded-lg text-sm font-bold hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors ${activeCategory === c ? 'text-[#4C1D95] dark:text-[#C4B5FD] bg-[#EDF6F5] dark:bg-[#573ec4]/15' : 'text-slate-600 dark:text-slate-300'}`}
                   >
                     {c}
                   </button>
@@ -460,7 +460,7 @@ export default function Transactions() {
 
           <div className="relative">
             <button onClick={() => { setShowTypeDropdown(!showTypeDropdown); setShowCategoryDropdown(false); }} className="flex items-center gap-2 px-4 py-2.5 text-sm font-bold text-slate-700 dark:text-slate-300 bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors shadow-sm">
-              <Filter className="w-4 h-4" /> Type: <span className="text-[#5E8F8E] dark:text-[#A6C7C7]">{activeType}</span> <ChevronDown className="w-4 h-4 text-slate-400" />
+              <Filter className="w-4 h-4" /> Type: <span className="text-[#4C1D95] dark:text-[#C4B5FD]">{activeType}</span> <ChevronDown className="w-4 h-4 text-slate-400" />
             </button>
             {showTypeDropdown && (
               <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 p-2 z-50">
@@ -468,7 +468,7 @@ export default function Transactions() {
                   <button 
                     key={t} 
                     onClick={() => { setActiveType(t); setShowTypeDropdown(false); }} 
-                    className={`w-full text-left px-3 py-2 rounded-lg text-sm font-bold hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors ${activeType === t ? 'text-[#5E8F8E] dark:text-[#A6C7C7] bg-[#EDF6F5] dark:bg-[#6E9F9D]/15' : 'text-slate-600 dark:text-slate-300'}`}
+                    className={`w-full text-left px-3 py-2 rounded-lg text-sm font-bold hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors ${activeType === t ? 'text-[#4C1D95] dark:text-[#C4B5FD] bg-[#EDF6F5] dark:bg-[#573ec4]/15' : 'text-slate-600 dark:text-slate-300'}`}
                   >
                     {t} Transactions
                   </button>
@@ -510,7 +510,7 @@ export default function Transactions() {
                     className="border-b border-slate-100 dark:border-white/20 bg-transparent hover:bg-slate-50 dark:hover:bg-white/[0.04] transition-all duration-300 cursor-pointer group"
                   >
                     <td className="px-6 py-4 whitespace-nowrap text-slate-500 dark:text-slate-400 font-medium">{tx.date}</td>
-                    <td className="px-6 py-4 font-bold text-slate-900 dark:text-white group-hover:text-[#5E8F8E] dark:group-hover:text-[#A6C7C7] transition-colors">{tx.description}</td>
+                    <td className="px-6 py-4 font-bold text-slate-900 dark:text-white group-hover:text-[#4C1D95] dark:group-hover:text-[#C4B5FD] transition-colors">{tx.description}</td>
                     <td className="px-6 py-4">
                       <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 dark:bg-[#17191E] text-slate-600 dark:text-slate-300">
                         {tx.category}
@@ -575,7 +575,7 @@ export default function Transactions() {
                   onClick={() => setCurrentPage(pageNum)}
                   className={`w-9 h-9 rounded-xl text-sm font-bold border transition-colors ${
                     pageNum === page
-                      ? 'bg-[#5E8F8E] text-white border-[#5E8F8E]'
+                      ? 'bg-[#4C1D95] text-white border-[#4C1D95]'
                       : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
                   }`}
                 >
@@ -624,20 +624,20 @@ export default function Transactions() {
                     y1={y1}
                     x2={x2}
                     y2={y2}
-                    stroke={active ? '#6E9F9D' : '#D7DEE8'}
+                    stroke={active ? '#573ec4' : '#D7DEE8'}
                     strokeWidth={5}
                     strokeLinecap="round"
                   />
                 );
               })}
             </svg>
-            <div className="absolute left-1/2 top-[63%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-[#6E9F9D]">
+            <div className="absolute left-1/2 top-[63%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-[#573ec4]">
               <CreditCard className="w-4.5 h-4.5" />
             </div>
           </div>
           <div className="space-y-1 mt-2 text-sm">
             <div className="flex items-center justify-between">
-              <span className="flex items-center gap-2 text-slate-600 dark:text-slate-300"><span className="w-2 h-2 rounded-full bg-[#6E9F9D]" />Low-Value Transactions</span>
+              <span className="flex items-center gap-2 text-slate-600 dark:text-slate-300"><span className="w-2 h-2 rounded-full bg-[#573ec4]" />Low-Value Transactions</span>
               <span className="font-bold text-slate-900 dark:text-white">75%</span>
             </div>
             <div className="flex items-center justify-between">
@@ -654,12 +654,12 @@ export default function Transactions() {
           </div>
           <div className="flex gap-1 h-8 items-end mb-3">
             {Array.from({ length: 24 }).map((_, i) => (
-              <div key={i} className={`w-1.5 rounded-sm ${i < 13 ? 'bg-[#6E9F9D]' : i < 19 ? 'bg-[#A6C7C7]' : 'bg-slate-200 dark:bg-slate-700'}`} style={{ height: `${16 + ((i % 5) * 2)}px` }} />
+              <div key={i} className={`w-1.5 rounded-sm ${i < 13 ? 'bg-[#573ec4]' : i < 19 ? 'bg-[#C4B5FD]' : 'bg-slate-200 dark:bg-slate-700'}`} style={{ height: `${16 + ((i % 5) * 2)}px` }} />
             ))}
           </div>
           <div className="flex flex-wrap gap-3 text-xs text-slate-600 dark:text-slate-300">
-            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#6E9F9D]" />Monthly Need</span>
-            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#A6C7C7]" />Subscription</span>
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#573ec4]" />Monthly Need</span>
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#C4B5FD]" />Subscription</span>
             <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600" />Other</span>
           </div>
         </div>

@@ -22,7 +22,7 @@ export default function TimelineSection() {
            className="mb-24"
          >
            <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-6">
-              Step 5: <span className="text-[#5E8F8E]">Track</span>
+              Step 5: <span className="text-[#4C1D95]">Track</span>
            </h2>
            <p className="text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto font-medium">
              Continuously upload files over time to build an expanding ledger intelligence timeline.
@@ -38,7 +38,7 @@ export default function TimelineSection() {
               initial={{ width: "0%" }}
               animate={isInView ? { width: "80%" } : { width: "0%" }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="absolute top-1/2 left-[10%] h-1 bg-[#6E9F9D] -translate-y-1/2 hidden md:block" 
+              className="absolute top-1/2 left-[10%] h-1 bg-[#573ec4] -translate-y-1/2 hidden md:block" 
             />
 
             {TIMELINE.map((step, i) => (
@@ -50,7 +50,7 @@ export default function TimelineSection() {
                 className="relative z-10 flex flex-col items-center bg-white p-6 rounded-3xl border border-slate-100 shadow-xl w-64"
               >
                 <div className="w-14 h-14 bg-[#EAF4F3] rounded-full flex items-center justify-center mb-6 shadow-inner">
-                  <Calendar className="w-6 h-6 text-[#5E8F8E]" />
+                  <Calendar className="w-6 h-6 text-[#4C1D95]" />
                 </div>
                 <h4 className="text-xl font-bold text-slate-900">{step.label}</h4>
                 <div className="mt-2 text-sm font-medium text-slate-500">{step.docs} Statements</div>

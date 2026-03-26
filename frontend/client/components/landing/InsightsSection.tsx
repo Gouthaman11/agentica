@@ -4,19 +4,19 @@ import { BrainCircuit, TrendingUp, AlertTriangle } from 'lucide-react';
 
 const INSIGHTS = [
   {
-    icon: <TrendingUp className="w-6 h-6 text-[#5E8F8E]" />,
+    icon: <TrendingUp className="w-6 h-6 text-[#4C1D95]" />,
     title: "Unusual Expense Detected",
     value: "Software Subs up 24%",
-    valueClass: "text-[#5E8F8E]"
+    valueClass: "text-[#4C1D95]"
   },
   {
-    icon: <BrainCircuit className="w-6 h-6 text-[#8FBFBD]" />,
+    icon: <BrainCircuit className="w-6 h-6 text-[#7353f6]" />,
     title: "Predicted Cashflow Gap",
     value: "Expected by Mar 25",
-    valueClass: "text-[#6E9F9D]"
+    valueClass: "text-[#573ec4]"
   },
   {
-    icon: <AlertTriangle className="w-6 h-6 text-[#D8EC63]" />,
+    icon: <AlertTriangle className="w-6 h-6 text-[#B39DFF]" />,
     title: "Missing Rent Payment",
     value: "Usually paid by 5th",
     valueClass: "text-[#7F9E35]"
@@ -36,7 +36,7 @@ export default function InsightsSection() {
              initial={{ scale: 0 }}
              animate={isInView ? { scale: 1 } : { scale: 0 }}
              transition={{ type: "spring", bounce: 0.5 }}
-             className="w-20 h-20 bg-gradient-to-br from-[#5E8F8E] to-[#8FBFBD] rounded-3xl mx-auto flex items-center justify-center shadow-2xl shadow-[#5E8F8E]/30 mb-8"
+             className="w-20 h-20 bg-gradient-to-br from-[#4C1D95] to-[#7353f6] rounded-3xl mx-auto flex items-center justify-center shadow-2xl shadow-[#4C1D95]/30 mb-8"
            >
              <BrainCircuit className="w-10 h-10 text-white" />
            </motion.div>
@@ -46,7 +46,7 @@ export default function InsightsSection() {
              transition={{ delay: 0.2 }}
              className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-6"
            >
-              Step 8: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5E8F8E] to-[#8FBFBD]">Insights</span>
+              Step 8: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C1D95] to-[#7353f6]">Insights</span>
            </motion.h2>
            <motion.p 
              initial={{ opacity: 0, y: 20 }}

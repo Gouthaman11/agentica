@@ -40,7 +40,7 @@ export default function Settings() {
           ].map((item) => (
             <button key={item.label} className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
               item.active 
-                ? 'bg-[#EDF6F5] dark:bg-[#6E9F9D]/15 text-[#5E8F8E] dark:text-[#A6C7C7] font-medium' 
+                ? 'bg-[#EDF6F5] dark:bg-[#573ec4]/15 text-[#4C1D95] dark:text-[#C4B5FD] font-medium' 
                 : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5'
             }`}>
               <item.icon className="w-4 h-4" />
@@ -66,7 +66,7 @@ export default function Settings() {
             <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-6">Profile Settings</h2>
             
             <div className="flex items-center gap-6 mb-8">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-r from-[#6E9F9D] to-[#8FBFBD] flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-[#8FBFBD]/25">
+              <div className="w-20 h-20 rounded-full bg-gradient-to-r from-[#573ec4] to-[#7353f6] flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-[#7353f6]/25">
                 {initials}
               </div>
               <div>
@@ -84,7 +84,7 @@ export default function Settings() {
                   type="text"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#6E9F9D]/50"
+                  className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#573ec4]/50"
                 />
               </div>
               <div className="space-y-1.5">
@@ -93,7 +93,7 @@ export default function Settings() {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#6E9F9D]/50"
+                  className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#573ec4]/50"
                 />
               </div>
               <div className="space-y-1.5">
@@ -102,7 +102,7 @@ export default function Settings() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#6E9F9D]/50"
+                  className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#573ec4]/50"
                 />
               </div>
               <div className="space-y-1.5">
@@ -111,7 +111,7 @@ export default function Settings() {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#6E9F9D]/50"
+                  className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#573ec4]/50"
                 />
               </div>
               <div className="space-y-1.5 md:col-span-2">
@@ -119,7 +119,7 @@ export default function Settings() {
                 <select
                   value={currency}
                   onChange={(e) => setCurrency(e.target.value)}
-                  className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#6E9F9D]/50"
+                  className="w-full bg-slate-100/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#573ec4]/50"
                 >
                   <option value="₹">₹ INR</option>
                   <option value="$">$ USD</option>
@@ -132,7 +132,7 @@ export default function Settings() {
             <div className="mt-8 flex justify-end">
               <button
                 onClick={handleSave}
-                className="bg-[#5E8F8E] hover:bg-[#4D7E7D] text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all active:scale-95 shadow-lg shadow-[#8FBFBD]/25"
+                className="bg-[#4C1D95] hover:bg-[#4D7E7D] text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all active:scale-95 shadow-lg shadow-[#7353f6]/25"
               >
                 Save Changes
               </button>
