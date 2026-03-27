@@ -1,20 +1,21 @@
-import express from "express";
 import cors from "cors";
-import { handleDemo } from "./routes/demo";
-import { authRouter } from "./routes/auth";
+import express from "express";
+
 import { checkDbConnection } from "./db";
+import { handleDemo } from "./routes/demo";
 import { usersRouter } from "./routes/users";
+import { authRouter } from "./routes/auth";
+import { validateS3Configuration } from "./s3";
 
 export function createServer() {
   const app = express();
-  checkDbConnection();
+  void checkDbConnection();
+  void validateS3Configuration();
 
-  // Middleware
   app.use(cors());
   app.use(express.json({ limit: "25mb" }));
   app.use(express.urlencoded({ extended: true }));
 
-  // Example API routes
   app.get("/api/ping", (_req, res) => {
     const ping = process.env.PING_MESSAGE ?? "ping";
     res.json({ message: ping });

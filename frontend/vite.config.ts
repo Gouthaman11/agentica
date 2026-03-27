@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { createServer } from "../backend/server";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   root: __dirname,
   server: {
@@ -37,12 +36,10 @@ function expressPlugin(): Plugin {
     configureServer(server) {
       const app = createServer();
 
-      // Route only API requests to Express in dev.
-      // Let Vite handle frontend pages/assets to avoid 404 on '/'.
       server.middlewares.use((req, res, next) => {
         const url = req.url ?? "";
         if (url.startsWith("/api/") || url === "/api") {
-          return app(req, res, next);
+          return (app as any)(req, res, next);
         }
         return next();
       });
